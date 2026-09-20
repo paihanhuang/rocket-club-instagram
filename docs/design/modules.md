@@ -6,6 +6,17 @@ that satisfies an interface at a seam). Domain words come from `CONTEXT.md`.
 The goal is deep modules: a lot of behaviour behind a small interface, tested
 through that interface.
 
+## Rules that come from the panel verdict
+
+- Generation runs in the evening for the next day; publishing happens on the
+  first publisher run after 15:00 local. A missing draft is generated on wake.
+- Approval is an emoji reaction read over REST, bound to the content hash.
+  Reacting approve means every flag on the card was confirmed.
+- `publishBy` comes from the item's own deadline or start time when one exists,
+  else creation plus 36 hours. Publish requires `now < publishBy`.
+- JPEGs are removed from the Pages branch once Instagram returns a media id.
+- The "published" notice carries the live link and a share checklist.
+
 ## The daily sequence (the runner)
 
 ```
@@ -32,7 +43,7 @@ type DraftText = { headline: string; slides: { title: string; body: string }[]; 
 type DraftStatus = "pending" | "approved" | "rejected" | "expired" | "publishing" | "published" | "failed";
 type Verdict = { decision: "approved" | "rejected"; by: string; at: string; contentHash: string };
 type Draft = { id: string; assignment: Assignment; text: DraftText; slides: { path: string }[];
-  photo?: LicensedPhoto; contentHash: string; createdAt: string; expiresAt: string;
+  photo?: LicensedPhoto; contentHash: string; createdAt: string; publishBy: string;
   status: DraftStatus; discordMessageId?: string; verdict?: Verdict;
   publish?: { imageUrls: string[]; containerIds: string[]; carouselId?: string; mediaId?: string; permalink?: string };
   error?: string };

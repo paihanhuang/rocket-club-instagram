@@ -20,7 +20,7 @@ destination, so if a button is worded differently, look for the destination.
    opportunities, and how rockets work, for South Bay high schoolers."
    The bio can be polished later; the API path needs the account to exist.
 
-## 2. Meta developer app (30 minutes, the fiddly one)
+## 2. Meta developer app (30 minutes, the fiddly one; do it the same day as step 1)
 
 Facts from Meta's docs, checked on 2026-09-19: the path called "Instagram API
 with Instagram Login" needs no Facebook Page, supports Business accounts,
@@ -28,8 +28,12 @@ includes content publishing, and needs no App Review when the app is only for
 an account you own. Tokens from the dashboard last 60 days and our publisher
 refreshes them.
 
-1. Go to https://developers.facebook.com and log in. You may need to register
-   as a developer (accept terms, verify by phone or email).
+1. Go to https://developers.facebook.com and log in **with a Facebook
+   account**. Meta's registration page says developer registration happens
+   while logged into Facebook, and confirms a phone number and an email by
+   code. If you have no Facebook account, create one with the same email you
+   used for Instagram. Meta's terms state no age rule for developers (checked
+   2026-09-19); a Facebook account itself requires age 13.
 2. Create an app: "My Apps", then "Create App". When asked for the use case,
    choose the **Instagram** one (the Instagram API with Instagram Login). Name
    it `lahsrocketry newsroom`. If it asks for a business portfolio, you can
