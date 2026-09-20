@@ -60,7 +60,9 @@ refreshes them.
    named `#approvals`. Only officers and the advisor should see it.
 2. Turn on Developer Mode in Discord: User Settings, then "Advanced", then
    "Developer Mode". Right-click the `#approvals` channel and choose
-   "Copy Channel ID". Save it.
+   "Copy Channel ID". Save it. Also right-click your own name and choose
+   "Copy User ID"; do the same for any officer who may approve posts. These
+   ids are the approver list: only their reactions count.
 3. Go to https://discord.com/developers/applications and click
    "New Application". Name it `lahsrocketry newsroom`.
 4. Open the **Bot** page. Click "Reset Token", copy the **bot token**. Under
@@ -75,16 +77,24 @@ refreshes them.
 
 ## 4. Put the secrets on this Mac (2 minutes)
 
-Create a file named `.env` in this folder with exactly these lines, values
-filled in. Never paste these anywhere else.
+Copy `.env.example` to `.env` in this folder and fill in the blanks. The
+GitHub Pages and local model lines are already filled in. Never paste these
+values anywhere else.
 
 ```
-IG_USER_ID=
-IG_ACCESS_TOKEN=
-META_APP_ID=
-META_APP_SECRET=
-DISCORD_BOT_TOKEN=
-DISCORD_APPROVAL_CHANNEL_ID=
+cp .env.example .env
+```
+
+The lines you fill in:
+
+```
+IG_USER_ID=              the Instagram user id from the Meta app page
+IG_ACCESS_TOKEN=         the long token you generated
+META_APP_ID=             App settings, Basic
+META_APP_SECRET=         App settings, Basic
+DISCORD_BOT_TOKEN=       Bot page, Reset Token
+DISCORD_APPROVAL_CHANNEL_ID=   Copy Channel ID on #approvals
+DISCORD_APPROVERS=       your user id, plus other officers', comma-separated
 ```
 
 Then run the checkup, which tests every key without posting anything:

@@ -83,7 +83,12 @@ async function makeInstagram(): Promise<InstagramPort> {
   });
 }
 
-async function makeDiscord(): Promise<DiscordPort> {
+async function makeDiscord(opts: { allowConsole?: boolean } = {}): Promise<DiscordPort> {
+  if (!env["DISCORD_BOT_TOKEN"] && opts.allowConsole) {
+    const { createConsoleDiscord } = await import("./discord/console.js");
+    say("note: DISCORD_BOT_TOKEN is not set; cards go to out/cards instead of Discord.");
+    return createConsoleDiscord({ outDir: join(dirs.out, "cards") });
+  }
   const { createDiscord } = await import("./discord/index.js");
   const approvers = (env["DISCORD_APPROVERS"] ?? "")
     .split(",")
@@ -127,7 +132,32 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
     ]);
 
   const net = options.net ?? fetch;
-  const writer = createWriter({ model: "auto", guidesDir: dirs.guides });
+  const http = {
+    kind: "http" as const,
+    baseUrl: env["LOCAL_LLM_BASE_URL"] ?? "http://127.0.0.1:18085/v1",
+    apiKey: env["LOCAL_LLM_API_KEY"] ?? "local-no-auth",
+    model: env["LOCAL_LLM_MODEL"] ?? "mtplx-qwen38-27b-optimized-quality",
+  };
+  const choice = env["WRITER_MODEL"] ?? "qwen";
+  const primary = createWriter({
+    model: choice === "http" ? http : choice === "auto" ? "auto" : { kind: "qwen" },
+    guidesDir: dirs.guides,
+  });
+  // qwen code is the chosen harness (ADR-0007); if the CLI itself is missing or
+  // times out, the direct HTTP adapter to the same model is the fallback.
+  const fallback = choice === "qwen" ? createWriter({ model: http, guidesDir: dirs.guides }) : undefined;
+  const { ModelTimeoutError, ModelUnavailableError } = await import("./writer/index.js");
+  const writeDraft: DailyDeps["writer"]["writeDraft"] = async (assignment, list, photo) => {
+    try {
+      return await primary.writeDraft(assignment, list, photo);
+    } catch (error) {
+      if (fallback && (error instanceof ModelUnavailableError || error instanceof ModelTimeoutError)) {
+        say(`note: qwen harness failed (${error.message}); retrying over HTTP.`);
+        return fallback.writeDraft(assignment, list, photo);
+      }
+      throw error;
+    }
+  };
 
   return {
     now: () => new Date(),
@@ -135,10 +165,10 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
     fetchItems: (pillar, opts) => fetchItems(pillar, { ...opts, fetch: net }),
     shortlist: (items, assignment, opts) => shortlist(items, assignment, opts),
     findLicensedPhoto: (list, opts) => findLicensedPhoto(list, { ...opts, fetch: net }),
-    writer: { writeDraft: (assignment, list, photo) => writer.writeDraft(assignment, list, photo) },
+    writer: { writeDraft },
     renderSlides: (text, pillar, photo, outDir) => renderSlides(text, pillar, photo, outDir),
     store: createDraftStore(options.storeDir ?? dirs.drafts),
-    discord: await makeDiscord(),
+    discord: await makeDiscord({ allowConsole: true }),
     home: LOS_ALTOS,
     dirs: {
       cache: dirs.cache,
@@ -150,9 +180,18 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
 }
 
 async function startModelServer(): Promise<void> {
+  const baseUrl = env["LOCAL_LLM_BASE_URL"] ?? "http://127.0.0.1:18085/v1";
+  const port = new URL(baseUrl).port || "18085";
   await ensureModelServer({
-    baseUrl: env["LOCAL_LLM_BASE_URL"] ?? "http://127.0.0.1:18085/v1",
+    baseUrl,
     exec: spawnDetached,
+    // The MTPLX cache holds two models; name the 3.8 quality one explicitly so a
+    // cold start never comes up on the 3.6 speed model (ADR-0004: Qwen 3.8 27B).
+    startCommand: [
+      "mtplx", "quickstart", "--port", port, "--yes",
+      "--model", env["LOCAL_LLM_MTPLX_MODEL"] ?? "Youssofal/Qwen3.8-27B-MTPLX-Optimized-Quality",
+      "--model-id", env["LOCAL_LLM_MODEL"] ?? "mtplx-qwen38-27b-optimized-quality",
+    ],
   });
 }
 
