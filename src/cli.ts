@@ -152,7 +152,9 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
     baseUrl: env["LOCAL_LLM_BASE_URL"] ?? "http://127.0.0.1:18085/v1",
     apiKey: env["LOCAL_LLM_API_KEY"] ?? "local-no-auth",
     model: env["LOCAL_LLM_MODEL"] ?? "mtplx-qwen38-27b-optimized-quality",
-    fetch: net,
+    // Always the real network: the model server is local, and the gate's
+    // fixture fetch (`net`) stands in for sources only, never for the model.
+    fetch,
   });
   // qwen code is the chosen harness (ADR-0007); if the CLI is missing or out of
   // time, the direct HTTP adapter to the same model answers instead.
