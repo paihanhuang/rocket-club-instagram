@@ -167,7 +167,17 @@ export function qwenGenerate(opts: { bin?: string; extraArgs?: readonly string[]
         );
       }
       if (result.code !== 0) {
-        throw new Error(`qwen exited with code ${result.code}: ${tail(result.stderr)}`);
+        // A non-zero exit with a usable payload is still the model's answer.
+        // Without one, the harness itself failed (a CLI banner, a bad flag, a
+        // missing setting), which is what the HTTP fallback exists for.
+        let parsed: ReturnType<typeof parseQwenStdout> | undefined;
+        try {
+          parsed = parseQwenStdout(result.stdout, { expect: requiredKeys(jsonSchema) });
+        } catch {
+          parsed = undefined;
+        }
+        if (parsed?.json !== undefined) return parsed;
+        throw new ModelUnavailableError(`qwen exited with code ${result.code}: ${tail(result.stderr)}`);
       }
 
       return parseQwenStdout(result.stdout, { expect: requiredKeys(jsonSchema) });

@@ -153,10 +153,20 @@ describe("qwenGenerate", () => {
     await expect(qwenGenerate({ bin })(request)).rejects.toThrow(ModelTimeoutError);
   });
 
-  it("reports any other non-zero exit with its stderr", async () => {
-    const { bin } = await stubBin('#!/bin/sh\necho "no model configured" >&2\nexit 1\n');
+  it("treats any other non-zero exit with no payload as the harness failing, so a fallback can answer", async () => {
+    const { bin } = await stubBin('#!/bin/sh\necho "SAFE MODE - all customizations disabled" >&2\nexit 1\n');
 
-    await expect(qwenGenerate({ bin })(request)).rejects.toThrow(/no model configured/);
+    await expect(qwenGenerate({ bin })(request)).rejects.toThrow(ModelUnavailableError);
+    await expect(qwenGenerate({ bin })(request)).rejects.toThrow(/SAFE MODE/);
+  });
+
+  it("keeps a payload the harness printed even when it then exited non-zero", async () => {
+    const { bin } = await stubBin(
+      "#!/bin/sh\necho '[{\"type\":\"result\",\"result\":\"{\\\"headline\\\":\\\"ok\\\",\\\"caption\\\":\\\"c\\\"}\"}]'\nexit 1\n",
+    );
+
+    const { json } = await qwenGenerate({ bin })(request);
+    expect(json).toEqual({ headline: "ok", caption: "c" });
   });
 
   it("runs headless in safe mode with tools off, the schema on disk and the wall time in seconds", async () => {
