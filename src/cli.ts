@@ -142,6 +142,7 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
   const primary = createWriter({
     model: choice === "http" ? http : choice === "auto" ? "auto" : { kind: "qwen" },
     guidesDir: dirs.guides,
+    wallTimeMs: Number(env["WRITER_WALL_TIME_S"] ?? 600) * 1000,
   });
   // qwen code is the chosen harness (ADR-0007); if the CLI itself is missing or
   // times out, the direct HTTP adapter to the same model is the fallback.

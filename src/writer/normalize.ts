@@ -126,9 +126,22 @@ function firstSentence(text: string): string {
  * slide the voice guide describes (headline plus a one-line subtitle) so a
  * usable draft is not thrown away over a missing array.
  */
+const HANDLE_LINE = /(^|\n)\s*@lahsrocketry\s*$/i;
+
+/** The template prints the handle on every slide; a model that types it too gets it removed. */
+function withoutHandle(slide: unknown): unknown {
+  if (!isRecord(slide)) return slide;
+  const out: Record<string, unknown> = { ...slide };
+  for (const key of ["title", "body"]) {
+    const value = out[key];
+    if (typeof value === "string") out[key] = value.replace(HANDLE_LINE, "").trim();
+  }
+  return out;
+}
+
 export function normalizeSlides(input: unknown, headline: unknown, caption: unknown): unknown {
-  if (Array.isArray(input) && input.length > MAX_SLIDES) return input.slice(0, MAX_SLIDES);
-  if (Array.isArray(input) && input.length > 0) return input;
+  if (Array.isArray(input) && input.length > MAX_SLIDES) return input.slice(0, MAX_SLIDES).map(withoutHandle);
+  if (Array.isArray(input) && input.length > 0) return input.map(withoutHandle);
   if (typeof headline !== "string") return input;
   const title = headline.trim().slice(0, 60);
   if (!title) return input;

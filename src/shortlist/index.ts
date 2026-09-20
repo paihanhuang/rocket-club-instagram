@@ -10,6 +10,10 @@
 import type { Assignment, Item, Shortlist } from "../newsroom/types.js";
 import { distanceKm, type Point } from "./geo.js";
 import { NEWSROOM_TZ, weekendWindow } from "./time.js";
+import { instantAt } from "../plan/time.js";
+
+/** The publisher may post from 3pm local on the assignment day; nothing earlier can be announced. */
+const PUBLISH_WINDOW_HOUR = 15;
 
 /** Los Altos High School. The weekend pillar measures from here. */
 export const LOS_ALTOS: Point = { lat: 37.3852, lon: -122.1141 };
@@ -124,14 +128,24 @@ function carriedNotes(items: Item[]): readonly string[] {
 }
 
 /** Within the next seven days, best first, soonest breaking a tie. */
-function pickLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pillar: string): Item[] {
+function notBeforeWindow(items: Item[], windowOpens: number, notes: Notes, pillar: string): Item[] {
+  const kept = items.filter((i) => {
+    const starts = at(i.startsAt);
+    return starts === undefined || starts >= windowOpens;
+  });
+  notes.dropped(pillar, items.length - kept.length, items.length, "launches before the publish window on the assignment day");
+  return kept;
+}
+
+function pickLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pillar: string, windowOpens: number): Item[] {
   const from = opts.now.getTime();
   const until = from + 7 * DAY_MS;
-  const upcoming = items.filter((i) => {
+  const inWeek = items.filter((i) => {
     const starts = at(i.startsAt);
     return starts !== undefined && starts >= from && starts <= until;
   });
-  notes.dropped(pillar, items.length - upcoming.length, items.length, "launches outside the next 7 days");
+  notes.dropped(pillar, items.length - inWeek.length, items.length, "launches outside the next 7 days");
+  const upcoming = notBeforeWindow(inWeek, windowOpens, notes, pillar);
 
   const ranked = [...upcoming].sort((a, b) => {
     const byScore = launchScore(b as Rankable) - launchScore(a as Rankable);
@@ -141,8 +155,9 @@ function pickLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pilla
 }
 
 /** This weekend, close enough to walk outside and look up. */
-function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes): Item[] {
+function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, windowOpens: number): Item[] {
   const { from, to } = weekendWindow(opts.now);
+  items = notBeforeWindow(items, windowOpens, notes, "weekend");
   const thisWeekend = items.filter((i) => {
     const starts = at(i.startsAt);
     return starts !== undefined && starts >= from.getTime() && starts <= to.getTime();
@@ -173,7 +188,7 @@ function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes): Item[
   notes.say("no local launches this weekend");
   const filled = [...chronological];
   const seen = new Set(filled.map((i) => i.id));
-  for (const item of pickLaunches(items, opts, new Notes([]), "weekend")) {
+  for (const item of pickLaunches(items, opts, new Notes([]), "weekend", windowOpens)) {
     if (!seen.has(item.id)) {
       filled.push(item);
       seen.add(item.id);
@@ -243,14 +258,15 @@ export function shortlist(
   opts: ShortlistOptions,
 ): Shortlist {
   const notes = new Notes(carriedNotes(items));
+  const windowOpens = instantAt(assignment.date, PUBLISH_WINDOW_HOUR).getTime();
 
   let picked: Item[];
   switch (assignment.pillar) {
     case "launches":
-      picked = pickLaunches(items, opts, notes, "launches");
+      picked = pickLaunches(items, opts, notes, "launches", windowOpens);
       break;
     case "weekend":
-      picked = pickWeekend(items, opts, notes);
+      picked = pickWeekend(items, opts, notes, windowOpens);
       break;
     case "review":
       picked = pickReview(items, opts, notes);

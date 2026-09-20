@@ -97,3 +97,34 @@ export function parseInstant(value: string | undefined): number | undefined {
   const ms = Date.parse(value);
   return Number.isFinite(ms) ? ms : undefined;
 }
+
+const PARTS = new Intl.DateTimeFormat("en-US", {
+  timeZone: TZ,
+  hourCycle: "h23",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+});
+
+/** Milliseconds the newsroom clock is ahead of UTC at `at` (negative in California). */
+function offsetAt(at: Date): number {
+  const p: Record<string, number> = {};
+  for (const part of PARTS.formatToParts(at)) if (part.type !== "literal") p[part.type] = Number(part.value);
+  const asIfUtc = Date.UTC(p["year"] ?? 0, (p["month"] ?? 1) - 1, p["day"] ?? 1, p["hour"] ?? 0, p["minute"] ?? 0, p["second"] ?? 0, at.getUTCMilliseconds());
+  return asIfUtc - at.getTime();
+}
+
+/**
+ * The instant at which a wall clock in the newsroom's zone reads `date` at the
+ * given time. Two passes, because the offset depends on the answer; exact
+ * except inside the repeated hour of a fall-back, which no rule turns on.
+ */
+export function instantAt(date: string, hour: number, minute = 0, second = 0): Date {
+  const [y, m, d] = date.split("-").map(Number);
+  const naive = Date.UTC(y ?? 1970, (m ?? 1) - 1, d ?? 1, hour, minute, second, 0);
+  const guess = new Date(naive - offsetAt(new Date(naive)));
+  return new Date(naive - offsetAt(guess));
+}

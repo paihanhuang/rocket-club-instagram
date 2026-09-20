@@ -189,7 +189,7 @@ describe("newDraft", () => {
   it("expires a day and a half out when nothing else sets the deadline", async () => {
     const slides = await writeSlideFiles(join(dir, "slides"), 1);
     const draft = await newDraft({ assignment: sampleAssignment(), text: sampleText(), slides, now });
-    expect(draft.publishBy).toBe("2026-09-26T15:30:00.000Z");
+    expect(draft.publishBy).toBe("2026-09-27T18:59:59.000Z");
   });
 });
 
@@ -197,12 +197,12 @@ describe("publishByFor", () => {
   const now = new Date("2026-09-25T03:30:00.000Z");
 
   it("posts a launch before it happens", () => {
-    const by = publishByFor(now, [sampleItem({ startsAt: "2026-09-25T22:00:00.000Z" })]);
+    const by = publishByFor(now, [sampleItem({ startsAt: "2026-09-25T22:00:00.000Z" })], "2026-09-25");
     expect(by).toBe("2026-09-25T22:00:00.000Z");
   });
 
   it("gives a deadline a day of room", () => {
-    const by = publishByFor(now, [sampleItem({ deadlineAt: "2026-09-26T07:00:00.000Z" })]);
+    const by = publishByFor(now, [sampleItem({ deadlineAt: "2026-09-26T07:00:00.000Z" })], "2026-09-25");
     expect(by).toBe("2026-09-25T07:00:00.000Z");
   });
 
@@ -210,17 +210,17 @@ describe("publishByFor", () => {
     const by = publishByFor(now, [
       sampleItem({ id: "a", startsAt: "2026-09-26T12:00:00.000Z" }),
       sampleItem({ id: "b", deadlineAt: "2026-09-26T09:00:00.000Z" }),
-    ]);
+    ], "2026-09-25");
     expect(by).toBe("2026-09-25T09:00:00.000Z");
   });
 
   it("never expires a draft before an approver could have answered", () => {
-    const by = publishByFor(now, [sampleItem({ startsAt: "2026-09-25T03:40:00.000Z" })]);
+    const by = publishByFor(now, [sampleItem({ startsAt: "2026-09-25T03:40:00.000Z" })], "2026-09-25");
     expect(by).toBe("2026-09-25T05:30:00.000Z");
   });
 
   it("ignores times it cannot read", () => {
-    const by = publishByFor(now, [sampleItem({ startsAt: "soon" })]);
-    expect(by).toBe("2026-09-26T15:30:00.000Z");
+    const by = publishByFor(now, [sampleItem({ startsAt: "soon" })], "2026-09-25");
+    expect(by).toBe("2026-09-26T18:59:59.000Z");
   });
 });

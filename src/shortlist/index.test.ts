@@ -12,7 +12,7 @@ const NOW = new Date("2026-09-23T19:00:00Z");
 const OPTS = { now: NOW, home: LOS_ALTOS };
 
 function assignment(pillar: Pillar): Assignment {
-  return { date: "2026-09-24", pillar, angle: "how to watch it live from the Bay Area" };
+  return { date: "2026-09-23", pillar, angle: "how to watch it live from the Bay Area" };
 }
 
 type TestItem = Item & { vehicle?: string; webcast?: { url: string } };
@@ -92,7 +92,7 @@ describe("launches", () => {
     const items = Array.from({ length: 7 }, (_, n) =>
       item({
         title: `Electron | Flight ${n}`,
-        startsAt: new Date(NOW.getTime() + (7 - n) * 60 * 60_000).toISOString(),
+        startsAt: new Date(NOW.getTime() + (10 - n) * 60 * 60_000).toISOString(),
       }),
     );
 

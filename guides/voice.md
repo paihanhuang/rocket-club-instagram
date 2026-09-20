@@ -38,7 +38,8 @@ Precise, warm, a little dry. Never a hype account. Never a corporation.
 - Slide 1 (cover): the headline, under 60 characters, plus a one-line subtitle.
 - Middle slides: one idea each. Title under 40 characters, body under 220
   characters. Three middle slides at most.
-- Last slide: the next step, plus "@lahsrocketry". Never a source line on a slide;
+- Last slide: the next step only. The template prints "@lahsrocketry" on every
+  slide, so never type the handle into a slide. Never a source line on a slide;
   the source line lives in the caption.
 
 ## Pillar notes

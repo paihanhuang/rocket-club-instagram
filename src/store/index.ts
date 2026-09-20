@@ -10,6 +10,7 @@
  * half-saved, and every read is validated against `draftSchema` so a hand-
  * edited file fails loudly instead of quietly publishing nonsense.
  */
+import { addDays, instantAt } from "../plan/time.js";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -98,9 +99,14 @@ export const DEADLINE_LEAD_MS = DAY_MS;
  * any case a day and a half after it was written — but never so soon that an
  * approver has no chance to answer.
  */
-export function publishByFor(createdAt: Date, items: Item[] = []): string {
+export function publishByFor(createdAt: Date, items: Item[] = [], assignmentDate?: string): string {
   const created = createdAt.getTime();
-  const candidates = [created + DEFAULT_SHELF_LIFE_MS];
+  // A post for day D is stale after the morning of D+1: the publisher may run
+  // late (a sleeping Mac), but not a day late.
+  const shelf = assignmentDate
+    ? instantAt(addDays(assignmentDate, 1), 11, 59, 59).getTime()
+    : created + DEFAULT_SHELF_LIFE_MS;
+  const candidates = [shelf];
   for (const item of items) {
     const deadline = parseInstant(item.deadlineAt);
     if (deadline !== undefined) candidates.push(deadline - DEADLINE_LEAD_MS);
@@ -126,7 +132,7 @@ export async function newDraft(input: NewDraftInput): Promise<Draft> {
     ...(photo ? { photo } : {}),
     contentHash,
     createdAt: now.toISOString(),
-    publishBy: publishByFor(now, items ?? []),
+    publishBy: publishByFor(now, items ?? [], assignment.date),
     status: "pending",
   };
 }

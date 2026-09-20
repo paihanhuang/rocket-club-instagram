@@ -154,20 +154,7 @@ export function qwenGenerate(opts: { bin?: string; extraArgs?: readonly string[]
     try {
       await writeFile(schemaPath, JSON.stringify(jsonSchema), "utf8");
       const seconds = Math.max(1, Math.ceil(wallTimeMs / 1000));
-      const args = [
-        user,
-        "--system-prompt",
-        system,
-        "--max-tool-calls",
-        "0",
-        "--json-schema",
-        `@${schemaPath}`,
-        "--max-wall-time",
-        String(seconds),
-        "--output-format",
-        "json",
-        ...extraArgs,
-      ];
+      const args = qwenArgs({ user, system, schemaPath, seconds, extraArgs });
 
       const result = await run(bin, args, wallTimeMs + 30_000);
 
@@ -188,4 +175,34 @@ export function qwenGenerate(opts: { bin?: string; extraArgs?: readonly string[]
       await rm(dir, { recursive: true, force: true });
     }
   };
+}
+
+/**
+ * The exact qwen code command line: headless, no tools, schema-bound output,
+ * and `--safe-mode` so no context file, skill, hook or extension is loaded
+ * (measured: it halves the time per call and removes the harness's own
+ * project context from the prompt).
+ */
+export function qwenArgs(input: {
+  user: string;
+  system: string;
+  schemaPath: string;
+  seconds: number;
+  extraArgs?: readonly string[];
+}): string[] {
+  return [
+    input.user,
+    "--system-prompt",
+    input.system,
+    "--safe-mode",
+    "--max-tool-calls",
+    "0",
+    "--json-schema",
+    `@${input.schemaPath}`,
+    "--max-wall-time",
+    String(input.seconds),
+    "--output-format",
+    "json",
+    ...(input.extraArgs ?? []),
+  ];
 }
