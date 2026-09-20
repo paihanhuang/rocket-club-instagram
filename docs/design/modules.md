@@ -65,7 +65,7 @@ model must produce and the schema is the contract with the writer harness.
 | sources | `fetchItems(pillar, {now, fetch, cacheDir}) → { items, notes }` | Source registry, Launch Library and RSS parsing, disk cache with timestamps, rate-limit spacing | External: inject `fetch`; tests use recorded fixtures |
 | shortlist | `shortlist(items, assignment, {now, home, notes?}) → Shortlist` | Time windows per pillar, distance from Los Altos, dedupe, ranking | In-process |
 | license | `findLicensedPhoto(shortlist, {fetch, photoDir}) → LicensedPhoto \| undefined` | Whitelist rules, Wikimedia license lookup, download, consent list for club photos | External: inject `fetch` |
-| writer | `writeDraft(assignment, shortlist, photo, guides, generate) → DraftText` | Prompt assembly from voice guide and fence, schema validation, one retry with the validation errors fed back | Local model behind a `Generate` port with three adapters: qwen code headless, OpenAI-compatible HTTP, fake |
+| writer | `writeDraft(assignment, shortlist, photo, guides, generate) → DraftText` | Prompt assembly from voice guide and fence, schema validation, one retry with the validation errors fed back | Local model behind a `Generate` port with three adapters: OpenAI-compatible HTTP (default), qwen code headless (optional, falls back to HTTP), fake |
 | render | `renderSlides(text, pillar, photo, outDir, browser) → Slide[]` | Card templates, Playwright, JPEG 1080x1350 sRGB, cover and closing slide rules | Local-substitutable: real Chromium in tests, checked by parsing the JPEG header |
 | discord | `createDiscord({token, channelId, approvers, fetch}) → { postDraft, readVerdict, notify }` | REST multipart upload, reaction listing, approver allowlist, message formatting with copyable caption | External: inject `fetch`; fake records calls |
 | store | `createDraftStore(dir) → { save, get, list, transition }` | One JSON per draft, content hash, expiry, legal transitions only | Local-substitutable: temp dir |
@@ -78,9 +78,9 @@ model must produce and the schema is the contract with the writer harness.
 
 - `fetch` is the one injected dependency for every network module. Production
   passes the global; tests pass a fake that replays fixtures and records calls.
-- The writer's `Generate` port is a real seam: the qwen code adapter is the
-  chosen harness, the HTTP adapter is the fallback if the harness misbehaves,
-  and the fake is for tests. Callers of `writeDraft` never know which is in use.
+- The writer's `Generate` port is a real seam: the HTTP adapter is the default,
+  the qwen code adapter is optional with HTTP behind it, and the fake is for
+  tests. Callers of `writeDraft` never know which is in use.
 - The store is the only place a draft's status changes. The runner and the
   publisher ask it to `transition`; they never write status themselves.
 - The publisher records every container id the moment Instagram returns it,

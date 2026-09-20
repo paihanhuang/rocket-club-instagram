@@ -156,9 +156,10 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
     // fixture fetch (`net`) stands in for sources only, never for the model.
     fetch,
   });
-  // qwen code is the chosen harness (ADR-0007); if the CLI is missing or out of
-  // time, the direct HTTP adapter to the same model answers instead.
-  const choice = env["WRITER_MODEL"] ?? "qwen";
+  // Direct HTTP is the default writer (ADR-0007, amended 2026-09-20): measured
+  // faster and more reliable than the qwen code harness on this model. Set
+  // WRITER_MODEL=qwen to use the harness with HTTP as its fallback.
+  const choice = env["WRITER_MODEL"] ?? "http";
   const generate =
     choice === "http"
       ? http

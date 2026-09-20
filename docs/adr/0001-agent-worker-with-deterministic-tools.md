@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by ADR-0007
 ---
 # The daily worker is an agent harness sequencing deterministic tools
 
