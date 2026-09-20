@@ -43,7 +43,8 @@ const dirs = {
   guides: join(ROOT, "guides"),
 };
 const TOKEN_FILE = join(dirs.state, "instagram-token.json");
-const SPIKE_CAPTION = "Test post from the newsroom spike. Will be deleted.";
+// Fence rule 8: every post carries a source line, even the spike's.
+const SPIKE_CAPTION = "Test post from the newsroom spike. Will be deleted.\n\nSource: LAHS Rocket Club.";
 
 const env = process.env;
 const say = (line = ""): void => console.log(line);
@@ -57,7 +58,19 @@ function required(key: string): string {
 /** The long-lived token the publisher refreshed, falling back to `.env`. */
 async function currentToken(): Promise<string> {
   const stored = await readTokenFile(TOKEN_FILE);
-  return stored?.token ?? required("IG_ACCESS_TOKEN");
+  if (stored?.token) return stored.token;
+  const token = required("IG_ACCESS_TOKEN");
+  // Start the 60-day clock the first time the token is used, so the day-50
+  // refresh has a date to count from. `pnpm tool token-refresh` makes it exact.
+  const now = new Date();
+  await mkdir(dirs.state, { recursive: true });
+  await writeTokenFile(TOKEN_FILE, {
+    token,
+    obtainedAt: now.toISOString(),
+    expiresAt: new Date(now.getTime() + 60 * 24 * 3_600_000).toISOString(),
+  });
+  say(`note: token clock started today; run "pnpm tool token-refresh" once to make it exact.`);
+  return token;
 }
 
 const pagesSiteBase = (): string =>
@@ -122,14 +135,17 @@ async function makeImageHost(): Promise<ImageHostPort> {
 type DailyOptions = { storeDir?: string; outDir?: string; net?: typeof fetch };
 
 async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
-  const [{ fetchItems }, { shortlist, LOS_ALTOS }, { findLicensedPhoto }, { createWriter }, { renderSlides }] =
+  const [{ fetchItems }, { shortlist, LOS_ALTOS }, { findLicensedPhoto }, { createWriter }, { renderSlides }, { createPhotoStore }] =
     await Promise.all([
       import("./sources/index.js"),
       import("./shortlist/index.js"),
       import("./license/index.js"),
       import("./writer/index.js"),
       import("./render/index.js"),
+      import("./photos/index.js"),
     ]);
+  // Fence rule 2: club photos come only from the consented folder.
+  const clubPhotos = createPhotoStore(join(dirs.photos, "consented"));
 
   const net = options.net ?? fetch;
   const http = {
@@ -162,10 +178,11 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
 
   return {
     now: () => new Date(),
+    ensureModelServer: startModelServer,
     readAssignment,
     fetchItems: (pillar, opts) => fetchItems(pillar, { ...opts, fetch: net }),
     shortlist: (items, assignment, opts) => shortlist(items, assignment, opts),
-    findLicensedPhoto: (list, opts) => findLicensedPhoto(list, { ...opts, fetch: net }),
+    findLicensedPhoto: (list, opts) => findLicensedPhoto(list, { ...opts, fetch: net, clubPhotos }),
     writer: { writeDraft },
     renderSlides: (text, pillar, photo, outDir) => renderSlides(text, pillar, photo, outDir),
     store: createDraftStore(options.storeDir ?? dirs.drafts),
@@ -222,7 +239,6 @@ async function commandDaily(args: string[]): Promise<number> {
   const date = flag(args, "--date") ?? nextAssignmentDate(new Date());
   const dryRun = args.includes("--dry-run");
   say(`Drafting ${date}${dryRun ? " (dry run)" : ""}…`);
-  await startModelServer();
   const result = await runDaily({ date, deps: await makeDailyDeps(), dryRun });
   if (!result.ok) {
     say(`✗ failed at ${result.step}: ${result.error}`);
@@ -265,7 +281,6 @@ async function commandGate(): Promise<number> {
 
   const net = env["GATE_FIXTURES"] === "1" ? await fixtureFetch() : undefined;
   say(net ? "Sources: recorded fixtures." : "Sources: live network.");
-  await startModelServer();
 
   const deps = await makeDailyDeps({ storeDir, outDir, ...(net ? { net } : {}) });
   const today = localDate(new Date());
@@ -310,6 +325,11 @@ async function fixtureFetch(): Promise<typeof fetch> {
 async function commandSpike(args: string[]): Promise<number> {
   const image = flag(args, "--image");
   if (!image) throw new Error("spike needs --image <path to a 1080x1350 jpeg>");
+  // Fence rule 1: a human approves every post. The spike is approved by the
+  // person typing --yes, and only they can delete it afterwards.
+  if (!args.includes("--yes")) {
+    throw new Error("spike publishes a real post to the account; re-run with --yes to confirm you will delete it afterwards");
+  }
   const path = resolve(ROOT, image);
   if (!existsSync(path)) throw new Error(`no such image: ${path}`);
 
@@ -373,7 +393,7 @@ const USAGE = [
   "  daily [--date YYYY-MM-DD] [--dry-run]",
   "  publish                       one publisher pass",
   "  gate                          21 dry runs (GATE_FIXTURES=1 to replay sources)",
-  "  spike --image <path>          one real post, end to end",
+  "  spike --image <path> --yes    one real post, end to end (you delete it afterwards)",
   "  token-refresh                 renew the long-lived Instagram token",
 ].join("\n");
 

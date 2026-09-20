@@ -307,11 +307,13 @@ describe("resuming after a crash", () => {
     expect(types(commands)).toEqual(["reset"]);
   });
 
-  it("publishes the recorded container of a single-slide draft", () => {
+  it("checks the recorded container of a single-slide draft, then publishes it once it is FINISHED", () => {
     const draft = singleDraft({
       publish: { imageUrls: ["https://pages.test/only.jpg"], containerIds: ["single-1"] },
     });
-    const { commands } = drive(resume(draft, NOW), [{ type: "begin" }]);
+    const checking = next(resume(draft, NOW), { type: "begin" });
+    expect(checking.commands).toEqual([{ type: "pollContainer", id: "single-1" }]);
+    const { commands } = next(checking.state, { type: "status", status: "FINISHED" });
     expect(commands).toEqual([{ type: "publish", containerId: "single-1" }]);
   });
 });

@@ -18,6 +18,10 @@ export const NASA_MEDIA_LICENSE = "NASA media usage guidelines (public domain)";
 
 /** Hosts whose own terms are the licence. */
 const NASA_HOSTS = ["nasa.gov"];
+/** ESA publishes most imagery CC BY-SA 3.0 IGO and states the licence per image. */
+const ESA_HOSTS = ["esa.int"];
+/** The one source whose licence tags are curated by a third party we trust. Matches sources/launchlibrary.ts. */
+export const LAUNCH_LIBRARY_SOURCE = "launchlibrary";
 /** Flickr serves its originals off staticflickr.com, so both count as Flickr. */
 const FLICKR_HOSTS = ["flickr.com", "staticflickr.com"];
 const WIKIMEDIA_UPLOAD_HOST = "upload.wikimedia.org";
@@ -38,6 +42,7 @@ function hostIsUnder(url: string, domains: readonly string[]): boolean {
 }
 
 export const isNasaHosted = (url: string): boolean => hostIsUnder(url, NASA_HOSTS);
+export const isEsaHosted = (url: string): boolean => hostIsUnder(url, ESA_HOSTS);
 export const isFlickrHosted = (url: string): boolean => hostIsUnder(url, FLICKR_HOSTS);
 export const isWikimediaUpload = (url: string): boolean =>
   hostOf(url) === WIKIMEDIA_UPLOAD_HOST;
@@ -77,11 +82,17 @@ export function isAllowedLicense(license: string | undefined): boolean {
   return false;
 }
 
-/** Rule 2: a licence the club may reuse, or a NASA host whose terms say so. */
+/**
+ * Rule 2: NASA by its own terms; otherwise a reusable licence, but only when
+ * the tag comes from a source the fence names (Launch Library's curated
+ * metadata, or ESA's own site). A licence tag on an image from an unknown feed
+ * proves nothing, and the fence says "nothing else, no matter how good it looks".
+ */
 export function allowedByLicenseOrHost(image: CandidateImage): string | undefined {
-  if (isAllowedLicense(image.license)) return image.license;
   // `||`, not `??`: an image that states an empty licence still needs a name here.
   if (isNasaHosted(image.url)) return image.license || NASA_MEDIA_LICENSE;
+  const trustedTag = image.source === LAUNCH_LIBRARY_SOURCE || isEsaHosted(image.url);
+  if (trustedTag && isAllowedLicense(image.license)) return image.license;
   return undefined;
 }
 

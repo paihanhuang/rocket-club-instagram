@@ -33,9 +33,9 @@ describe("publishByFor: a draft is useful until the morning after its assignment
     expect(by).toBe("2026-09-26T06:59:00.000Z");
   });
 
-  it("never expires a draft within two hours of its creation", () => {
+  it("expires at the launch even when the launch is minutes away, rather than after it", () => {
     const by = publishByFor(created, [item({ startsAt: "2026-09-25T03:40:00.000Z" })], "2026-09-26");
-    expect(by).toBe("2026-09-25T05:30:00.000Z");
+    expect(by).toBe("2026-09-25T03:40:00.000Z");
   });
 
   it("uses standard time after the November change", () => {

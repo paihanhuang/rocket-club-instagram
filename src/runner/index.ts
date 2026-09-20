@@ -58,6 +58,8 @@ export type RenderSlidesStep = (
 
 export type DailyDeps = {
   now: Clock;
+  /** Starts and health-checks the local model server; a failure is reported like any other step. */
+  ensureModelServer?: () => Promise<void>;
   readAssignment: ReadAssignmentStep;
   fetchItems: FetchItemsStep;
   shortlist: ShortlistStep;
@@ -72,6 +74,7 @@ export type DailyDeps = {
 
 export type RunStep =
   | "load"
+  | "ensureModelServer"
   | "readAssignment"
   | "fetchItems"
   | "shortlist"
@@ -126,6 +129,11 @@ export async function runDaily({ date, deps, dryRun = false }: RunDailyInput): P
     if (existing) return { ok: true, draftId: existing.id, skipped: "exists" };
 
     const now = deps.now();
+
+    if (deps.ensureModelServer) {
+      step = "ensureModelServer";
+      await deps.ensureModelServer();
+    }
 
     step = "readAssignment";
     const assignment = await deps.readAssignment(date, deps.dirs.plan);

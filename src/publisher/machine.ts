@@ -34,6 +34,7 @@ export type State =
   | { phase: "poll"; plan: PublishPlan; imageUrls: string[]; containerIds: string[]; polls: number }
   | { phase: "parent"; plan: PublishPlan; imageUrls: string[]; containerIds: string[] }
   | { phase: "pollParent"; plan: PublishPlan; carouselId: string; polls: number }
+  | { phase: "checkSingle"; plan: PublishPlan; containerId: string; polls: number }
   | { phase: "publish"; plan: PublishPlan; containerId: string }
   | { phase: "published"; plan: PublishPlan; mediaId?: string | undefined; permalink?: string | undefined }
   | { phase: "reset"; plan: PublishPlan; reason: string }
@@ -121,7 +122,8 @@ export function resume(draft: Draft, now: Date): State {
   }
   const single = containerIds[0];
   if (draft.slides.length === 1 && containerIds.length === 1 && single) {
-    return { phase: "publish", plan, containerId: single };
+    // The crash may have come after media_publish succeeded; ask before publishing again.
+    return { phase: "checkSingle", plan, containerId: single, polls: 0 };
   }
   if (imageUrls.length === 0) {
     return { phase: "reset", plan, reason: "containers exist but no image urls were recorded" };
@@ -195,6 +197,15 @@ function enter(state: State): Step {
         commands: [
           ...(state.polls > 0 ? [{ type: "sleep" as const, ms: POLL_INTERVAL_MS }] : []),
           { type: "pollContainer", id: state.carouselId },
+        ],
+      };
+
+    case "checkSingle":
+      return {
+        state,
+        commands: [
+          ...(state.polls > 0 ? [{ type: "sleep" as const, ms: POLL_INTERVAL_MS }] : []),
+          { type: "pollContainer", id: state.containerId },
         ],
       };
 
@@ -281,6 +292,33 @@ function afterParentPoll(
   }
 }
 
+/** A single-slide container recorded before a crash: publish it once, never twice. */
+function afterSingleCheck(
+  state: Extract<State, { phase: "checkSingle" }>,
+  status: ContainerStatus,
+): Step {
+  switch (status) {
+    case "PUBLISHED":
+      return enter({ phase: "published", plan: state.plan });
+    case "FINISHED":
+      return enter({ phase: "publish", plan: state.plan, containerId: state.containerId });
+    case "ERROR":
+    case "EXPIRED":
+      return enter({ phase: "reset", plan: state.plan, reason: `the image container came back ${status}` });
+    case "IN_PROGRESS": {
+      const polls = state.polls + 1;
+      if (polls >= MAX_POLLS) {
+        return enter({
+          phase: "failed",
+          plan: state.plan,
+          message: `the image container was not ready after ${(MAX_POLLS * POLL_INTERVAL_MS) / 60_000} minutes`,
+        });
+      }
+      return enter({ ...state, polls });
+    }
+  }
+}
+
 /** One move. `begin` asks a state for the commands it was entered with. */
 export function next(state: State, event: AnyEvent): Step {
   if (event.type === "begin") return enter(state);
@@ -341,6 +379,9 @@ export function next(state: State, event: AnyEvent): Step {
 
     case "pollParent":
       return event.type === "status" ? afterParentPoll(state, event.status) : stay(state);
+
+    case "checkSingle":
+      return event.type === "status" ? afterSingleCheck(state, event.status) : stay(state);
 
     case "publish":
       if (event.type === "publishedOk") {

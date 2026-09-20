@@ -62,6 +62,16 @@ export const DEFAULT_SHARE_CHECKLIST = [
 /** The marker that keeps a mismatched approval from being reported every run. */
 export const HASH_MISMATCH_NOTE = "approval does not match the current content hash";
 
+/**
+ * A verdict binds to the content the approver saw: the card prints the first
+ * 12 characters of the content hash and the verdict carries them back. A full
+ * hash also matches; anything shorter or different does not.
+ */
+export function verdictMatches(contentHash: string, verdict: { contentHash: string }): boolean {
+  const ref = verdict.contentHash;
+  return ref.length >= 12 && contentHash.startsWith(ref);
+}
+
 export type TokenRecord = { token: string; obtainedAt: string; expiresAt: string };
 
 export async function readTokenFile(path: string): Promise<TokenRecord | undefined> {
@@ -175,7 +185,7 @@ export async function runPublisher(deps: PublisherDeps): Promise<PublishReport> 
         report.skipped.push({ draftId: draft.id, reason: "rejected" });
         continue;
       }
-      if (verdict.contentHash === draft.contentHash) {
+      if (verdictMatches(draft.contentHash, verdict)) {
         await store.transition(draft.id, "pending", "approved", { verdict });
         continue;
       }

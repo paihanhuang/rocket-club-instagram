@@ -119,6 +119,18 @@ beforeEach(async () => {
 });
 
 describe("runDaily", () => {
+  it("reports a model server that will not start like any other step", async () => {
+    const h = await harness(dir);
+    h.deps.ensureModelServer = async () => {
+      throw new Error("mtplx did not answer");
+    };
+    const result = await runDaily({ date: DATE, deps: h.deps });
+    expect(result).toMatchObject({ ok: false, step: "ensureModelServer" });
+    expect(h.notices.join("\n")).toMatch(/ensureModelServer/);
+    expect(h.notices.join("\n")).toMatch(/mtplx did not answer/);
+    expect(h.posted).toHaveLength(0);
+  });
+
   it("runs the steps in order and leaves a pending draft on the board", async () => {
     const h = await harness(dir);
     const result = await runDaily({ date: DATE, deps: h.deps });

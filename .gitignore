@@ -9,5 +9,5 @@ dist/
 state/
 out/
 cache/
-photos/
+/photos/consented/
 .playwright/

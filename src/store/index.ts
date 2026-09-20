@@ -86,10 +86,6 @@ export type NewDraftInput = {
   items?: Item[] | undefined;
 };
 
-/** Longest a draft may wait for a verdict when nothing else sets the deadline. */
-export const DEFAULT_SHELF_LIFE_MS = 36 * HOUR_MS;
-/** A draft always gets this long, even when its material expires sooner. */
-export const MIN_SHELF_LIFE_MS = 2 * HOUR_MS;
 /** How far before an application deadline a post stops being useful. */
 export const DEADLINE_LEAD_MS = DAY_MS;
 
@@ -99,13 +95,10 @@ export const DEADLINE_LEAD_MS = DAY_MS;
  * any case a day and a half after it was written — but never so soon that an
  * approver has no chance to answer.
  */
-export function publishByFor(createdAt: Date, items: Item[] = [], assignmentDate?: string): string {
-  const created = createdAt.getTime();
+export function publishByFor(createdAt: Date, items: Item[], assignmentDate: string): string {
   // A post for day D is stale after the morning of D+1: the publisher may run
   // late (a sleeping Mac), but not a day late.
-  const shelf = assignmentDate
-    ? instantAt(addDays(assignmentDate, 1), 11, 59, 59).getTime()
-    : created + DEFAULT_SHELF_LIFE_MS;
+  const shelf = instantAt(addDays(assignmentDate, 1), 11, 59, 59).getTime();
   const candidates = [shelf];
   for (const item of items) {
     const deadline = parseInstant(item.deadlineAt);
@@ -113,8 +106,9 @@ export function publishByFor(createdAt: Date, items: Item[] = [], assignmentDate
     const starts = parseInstant(item.startsAt);
     if (starts !== undefined) candidates.push(starts);
   }
-  const earliest = Math.min(...candidates);
-  return new Date(Math.max(earliest, created + MIN_SHELF_LIFE_MS)).toISOString();
+  // No floor: a launch minutes away means the draft is already too late, and
+  // saying so is better than publishing after liftoff.
+  return new Date(Math.max(Math.min(...candidates), createdAt.getTime())).toISOString();
 }
 
 /** A pending draft with its id, hash and expiry computed. Does not save it. */

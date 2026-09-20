@@ -105,7 +105,12 @@ pnpm tool doctor
 
 It reports, line by line, whether the Instagram token works, what account it
 belongs to, whether the Discord bot can see the channel, and whether the local
-model server is reachable. Fix anything red and run it again.
+model server is reachable. Fix anything red and run it again. When everything
+is green, run this once so the token's 60-day clock is known exactly:
+
+```
+pnpm tool token-refresh
+```
 
 ## What I do on my side
 

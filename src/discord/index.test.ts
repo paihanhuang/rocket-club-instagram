@@ -127,7 +127,7 @@ describe("postDraft", () => {
     });
   });
 
-  it("writes the card in order: header, headline, caption code block, hashtags, react line", async () => {
+  it("writes the card in order: header, headline, caption code block, hashtags, react line, hash ref", async () => {
     const r = recorder(() => json({ id: "m" }));
     const discord = createDiscord({ ...CONFIG, fetch: r.fetch });
     await discord.postDraft(makeDraft(), await slideFiles(1));
@@ -141,9 +141,10 @@ describe("postDraft", () => {
       "```text\nA rocket goes up from Vandenberg this Saturday and you can see it from Los Altos.\n```",
     );
     expect(content).toContain("\n#rockets #spacex #bayarea #losaltos #stem\n");
-    expect(lines.at(-1)).toBe(
+    expect(lines.at(-2)).toBe(
       "React ✅ to approve (this means you checked every flag) or ❌ to reject.",
     );
+    expect(lines.at(-1)).toBe("ref hash-abc");
     expect(content.indexOf("```text")).toBeGreaterThan(content.indexOf("Falcon 9"));
     expect(content.indexOf("#rockets")).toBeGreaterThan(content.indexOf("```text"));
   });
@@ -170,9 +171,7 @@ describe("postDraft", () => {
     const content = payloadOf(r.calls[0]!).content;
     expect(content.length).toBeLessThan(2000);
     expect(content).toContain("…\n```");
-    expect(content.endsWith("React ✅ to approve (this means you checked every flag) or ❌ to reject.")).toBe(
-      true,
-    );
+    expect(content).toContain("React ✅ to approve (this means you checked every flag) or ❌ to reject.\nref hash-abc");
     expect(content).toContain("#rockets");
   });
 
@@ -194,10 +193,13 @@ describe("readVerdict", () => {
     `https://discord.com/api/v10/channels/chan-1/messages/msg-9/reactions/${emoji}?limit=100`;
 
   it("approves when a listed approver reacted, ignoring the bot's own reaction", async () => {
+    const messageUrl = reactionUrl(CROSS).split("/reactions/")[0]!;
     const r = recorder((req) =>
-      req.url.includes(CROSS)
-        ? json([{ id: "bot-self", bot: true }])
-        : json([{ id: "bot-self", bot: true }, { id: "u-officer", username: "officer" }]),
+      req.url === messageUrl
+        ? json({ id: draft.discordMessageId, content: "…\nReact ✅ to approve or ❌ to reject.\nref hash-abc" })
+        : req.url.includes(CROSS)
+          ? json([{ id: "bot-self", bot: true }])
+          : json([{ id: "bot-self", bot: true }, { id: "u-officer", username: "officer" }]),
     );
     const discord = createDiscord({
       ...CONFIG,
@@ -211,7 +213,7 @@ describe("readVerdict", () => {
       at: "2026-09-26T18:30:00.000Z",
       contentHash: "hash-abc",
     });
-    expect(r.calls.map((c) => c.url)).toEqual([reactionUrl(CROSS), reactionUrl(CHECK)]);
+    expect(r.calls.map((c) => c.url)).toEqual([reactionUrl(CROSS), reactionUrl(CHECK), messageUrl]);
     expect(r.calls[0]!.method).toBe("GET");
     expect(r.calls[0]!.headers["authorization"]).toBe("Bot bot-token");
   });

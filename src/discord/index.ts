@@ -27,6 +27,9 @@ const MAX_FILES = 10;
 
 export const APPROVE = "✅";
 export const REJECT = "❌";
+/** How much of the content hash the card prints, so a verdict can be matched to what was seen. */
+export const HASH_REF_LENGTH = 12;
+const HASH_REF = /\bref ([A-Za-z0-9-]{6,64})\b/;
 const REACT_LINE = `React ${APPROVE} to approve (this means you checked every flag) or ${REJECT} to reject.`;
 
 export class DiscordError extends Error {
@@ -84,7 +87,7 @@ export function buildCardContent(draft: Draft): string {
     text.flags.length > 0 ? ["**⚠️ FLAGS:**", ...text.flags.map((f) => `**${f}**`)] : [];
   const hashtags = text.hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" ");
   const before = [head, text.headline, ...flagLines, "```text"];
-  const after = ["```", hashtags, REACT_LINE];
+  const after = ["```", hashtags, REACT_LINE, `ref ${draft.contentHash.slice(0, HASH_REF_LENGTH)}`];
 
   const budget = MAX_CONTENT - 1 - [...before, "", ...after].join("\n").length;
   let caption = text.caption;
@@ -121,6 +124,14 @@ export function createDiscord(cfg: DiscordConfig): DiscordPort {
     }
     if (!res.ok) throw new DiscordError(what, res.status, await res.text().catch(() => ""));
     return res;
+  }
+
+  /** The hash reference printed on the card the approver reacted to; "" if the message has none. */
+  async function hashRefOn(messageId: string): Promise<string> {
+    const res = await send("get message", "GET", `/channels/${cfg.channelId}/messages/${messageId}`);
+    const message = (await res.json()) as { content?: unknown };
+    const content = typeof message.content === "string" ? message.content : "";
+    return HASH_REF.exec(content)?.[1] ?? "";
   }
 
   async function reactors(messageId: string, emoji: string): Promise<string[]> {
@@ -176,11 +187,11 @@ export function createDiscord(cfg: DiscordConfig): DiscordPort {
       // A rejection wins, so it is read first and answered without asking further.
       const rejectedBy = (await reactors(messageId, REJECT))[0];
       if (rejectedBy) {
-        return { decision: "rejected", by: rejectedBy, at, contentHash: draft.contentHash };
+        return { decision: "rejected", by: rejectedBy, at, contentHash: await hashRefOn(messageId) };
       }
       const approvedBy = (await reactors(messageId, APPROVE))[0];
       if (approvedBy) {
-        return { decision: "approved", by: approvedBy, at, contentHash: draft.contentHash };
+        return { decision: "approved", by: approvedBy, at, contentHash: await hashRefOn(messageId) };
       }
       return undefined;
     },

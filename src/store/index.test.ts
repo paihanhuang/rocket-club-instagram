@@ -214,9 +214,9 @@ describe("publishByFor", () => {
     expect(by).toBe("2026-09-25T09:00:00.000Z");
   });
 
-  it("never expires a draft before an approver could have answered", () => {
+  it("expires at a launch even when it is minutes away", () => {
     const by = publishByFor(now, [sampleItem({ startsAt: "2026-09-25T03:40:00.000Z" })], "2026-09-25");
-    expect(by).toBe("2026-09-25T05:30:00.000Z");
+    expect(by).toBe("2026-09-25T03:40:00.000Z");
   });
 
   it("ignores times it cannot read", () => {
