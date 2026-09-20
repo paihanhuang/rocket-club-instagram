@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+# runtime state and generated media never go in the repo
+state/
+out/
+cache/
+photos/
+.playwright/
