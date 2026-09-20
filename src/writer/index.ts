@@ -21,6 +21,7 @@ import { assemblePrompt, type Guides } from "./prompt.js";
 export { DraftInvalidError, ModelTimeoutError, ModelUnavailableError, type DraftAttempt } from "./errors.js";
 export { fakeGenerate, type FakeGenerate, type GenerateRequest } from "./generate/fake.js";
 export { httpGenerate, type HttpGenerateConfig } from "./generate/http.js";
+export { withFallback } from "./generate/fallback.js";
 export { parseQwenStdout, qwenGenerate } from "./generate/qwen.js";
 export {
   assemblePrompt,
@@ -116,7 +117,8 @@ export function writerWith(generate: Generate, opts: { guides: Guides; wallTimeM
   };
 }
 
-function readGuides(guidesDir: string): Guides {
+/** The voice guide and the fence, read once. */
+export function readGuides(guidesDir: string): Guides {
   return {
     voice: readFileSync(join(guidesDir, "voice.md"), "utf8"),
     fence: readFileSync(join(guidesDir, "fence.md"), "utf8"),

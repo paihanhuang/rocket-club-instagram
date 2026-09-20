@@ -70,7 +70,7 @@ async function harness(dir: string): Promise<Harness> {
     async fetchItems(pillar, opts) {
       guard("fetchItems");
       calls.push(`pillar:${pillar}`, `cache:${opts.cacheDir}`);
-      return [sampleItem({ startsAt: "2026-09-26T14:00:00.000Z" })];
+      return { items: [sampleItem({ startsAt: "2026-09-26T14:00:00.000Z" })], notes: [] };
     },
     shortlist(items, assignment): Shortlist {
       guard("shortlist");

@@ -22,23 +22,11 @@ export type FetchItemsOptions = {
   cacheDir: string;
 };
 
-/**
- * The items, and one line for every source that misbehaved. `notes` is
- * non-enumerable, so this is an ordinary `Item[]` to anything that does not
- * ask for it — including `JSON.stringify` and a caller that just maps over it.
- */
-export type ItemsWithNotes = Item[] & { readonly notes: string[] };
+/** The items, and one line for every source that misbehaved (a dead feed, a stale cache). */
+export type FetchedItems = { items: Item[]; notes: string[] };
 
 /** A school club reading public feeds; say so. */
 const USER_AGENT = "lahsrocketry-newsroom/0.1 (+https://github.com/lahsrocketry)";
-
-function withNotes(items: Item[], notes: string[]): ItemsWithNotes {
-  return Object.defineProperty(items, "notes", {
-    value: notes,
-    enumerable: false,
-    writable: false,
-  }) as ItemsWithNotes;
-}
 
 function reason(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
@@ -79,9 +67,9 @@ async function load(source: Source, opts: FetchItemsOptions): Promise<Loaded> {
 export async function fetchItems(
   pillar: Pillar,
   opts: FetchItemsOptions,
-): Promise<ItemsWithNotes> {
+): Promise<FetchedItems> {
   const sources = sourcesFor(pillar);
-  if (sources.length === 0) return withNotes([], []);
+  if (sources.length === 0) return { items: [], notes: [] };
 
   const items: Item[] = [];
   const notes: string[] = [];
@@ -107,7 +95,7 @@ export async function fetchItems(
     throw new Error(`sources: every source for ${pillar} failed — ${failures.join("; ")}`);
   }
 
-  return withNotes(items, notes);
+  return { items: items, notes: notes };
 }
 
 /** For the doctor, which probes every source without fetching a pillar. */

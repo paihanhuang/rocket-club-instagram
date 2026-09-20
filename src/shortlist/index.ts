@@ -21,6 +21,8 @@ export const LOS_ALTOS: Point = { lat: 37.3852, lon: -122.1141 };
 export type ShortlistOptions = {
   now: Date;
   home: Point;
+  /** Notes the sources reported (a dead feed, a stale cache); they lead the shortlist's own. */
+  notes?: readonly string[];
 };
 
 /**
@@ -122,11 +124,6 @@ class Notes {
 }
 
 /** Sources attach their own notes (a stale cache, a dead feed); they belong in the shortlist. */
-function carriedNotes(items: Item[]): readonly string[] {
-  const carried = (items as Item[] & { notes?: unknown }).notes;
-  return Array.isArray(carried) ? carried.filter((n): n is string => typeof n === "string") : [];
-}
-
 /** Within the next seven days, best first, soonest breaking a tie. */
 function notBeforeWindow(items: Item[], windowOpens: number, notes: Notes, pillar: string): Item[] {
   const kept = items.filter((i) => {
@@ -257,7 +254,7 @@ export function shortlist(
   assignment: Assignment,
   opts: ShortlistOptions,
 ): Shortlist {
-  const notes = new Notes(carriedNotes(items));
+  const notes = new Notes(opts.notes ?? []);
   const windowOpens = instantAt(assignment.date, PUBLISH_WINDOW_HOUR).getTime();
 
   let picked: Item[];

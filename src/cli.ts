@@ -135,12 +135,11 @@ async function makeImageHost(): Promise<ImageHostPort> {
 type DailyOptions = { storeDir?: string; outDir?: string; net?: typeof fetch };
 
 async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
-  const [{ fetchItems }, { shortlist, LOS_ALTOS }, { findLicensedPhoto }, { createWriter }, { renderSlides }, { createPhotoStore }] =
+  const [{ fetchItems }, { shortlist, LOS_ALTOS }, { findLicensedPhoto }, { renderSlides }, { createPhotoStore }] =
     await Promise.all([
       import("./sources/index.js"),
       import("./shortlist/index.js"),
       import("./license/index.js"),
-      import("./writer/index.js"),
       import("./render/index.js"),
       import("./photos/index.js"),
     ]);
@@ -148,33 +147,24 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
   const clubPhotos = createPhotoStore(join(dirs.photos, "consented"));
 
   const net = options.net ?? fetch;
-  const http = {
-    kind: "http" as const,
+  const { httpGenerate, qwenGenerate, readGuides, withFallback, writerWith } = await import("./writer/index.js");
+  const http = httpGenerate({
     baseUrl: env["LOCAL_LLM_BASE_URL"] ?? "http://127.0.0.1:18085/v1",
     apiKey: env["LOCAL_LLM_API_KEY"] ?? "local-no-auth",
     model: env["LOCAL_LLM_MODEL"] ?? "mtplx-qwen38-27b-optimized-quality",
-  };
+    fetch: net,
+  });
+  // qwen code is the chosen harness (ADR-0007); if the CLI is missing or out of
+  // time, the direct HTTP adapter to the same model answers instead.
   const choice = env["WRITER_MODEL"] ?? "qwen";
-  const primary = createWriter({
-    model: choice === "http" ? http : choice === "auto" ? "auto" : { kind: "qwen" },
-    guidesDir: dirs.guides,
+  const generate =
+    choice === "http"
+      ? http
+      : withFallback(qwenGenerate({}), http, (error) => say(`note: qwen harness failed (${error.message}); retrying over HTTP.`));
+  const writer = writerWith(generate, {
+    guides: readGuides(dirs.guides),
     wallTimeMs: Number(env["WRITER_WALL_TIME_S"] ?? 600) * 1000,
   });
-  // qwen code is the chosen harness (ADR-0007); if the CLI itself is missing or
-  // times out, the direct HTTP adapter to the same model is the fallback.
-  const fallback = choice === "qwen" ? createWriter({ model: http, guidesDir: dirs.guides }) : undefined;
-  const { ModelTimeoutError, ModelUnavailableError } = await import("./writer/index.js");
-  const writeDraft: DailyDeps["writer"]["writeDraft"] = async (assignment, list, photo) => {
-    try {
-      return await primary.writeDraft(assignment, list, photo);
-    } catch (error) {
-      if (fallback && (error instanceof ModelUnavailableError || error instanceof ModelTimeoutError)) {
-        say(`note: qwen harness failed (${error.message}); retrying over HTTP.`);
-        return fallback.writeDraft(assignment, list, photo);
-      }
-      throw error;
-    }
-  };
 
   return {
     now: () => new Date(),
@@ -183,7 +173,7 @@ async function makeDailyDeps(options: DailyOptions = {}): Promise<DailyDeps> {
     fetchItems: (pillar, opts) => fetchItems(pillar, { ...opts, fetch: net }),
     shortlist: (items, assignment, opts) => shortlist(items, assignment, opts),
     findLicensedPhoto: (list, opts) => findLicensedPhoto(list, { ...opts, fetch: net, clubPhotos }),
-    writer: { writeDraft },
+    writer,
     renderSlides: (text, pillar, photo, outDir) => renderSlides(text, pillar, photo, outDir),
     store: createDraftStore(options.storeDir ?? dirs.drafts),
     discord: await makeDiscord({ allowConsole: true }),

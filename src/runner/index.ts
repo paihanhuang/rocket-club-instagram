@@ -34,11 +34,11 @@ export type ReadAssignmentStep = (date: string, planDir: string) => Promise<Assi
 export type FetchItemsStep = (
   pillar: Pillar,
   opts: { now: Date; cacheDir: string },
-) => Promise<Item[]>;
+) => Promise<{ items: Item[]; notes: string[] }>;
 export type ShortlistStep = (
   items: Item[],
   assignment: Assignment,
-  opts: { now: Date; home: Home },
+  opts: { now: Date; home: Home; notes?: readonly string[] },
 ) => Shortlist | Promise<Shortlist>;
 export type FindLicensedPhotoStep = (
   shortlist: Shortlist,
@@ -139,10 +139,10 @@ export async function runDaily({ date, deps, dryRun = false }: RunDailyInput): P
     const assignment = await deps.readAssignment(date, deps.dirs.plan);
 
     step = "fetchItems";
-    const items = await deps.fetchItems(assignment.pillar, { now, cacheDir: deps.dirs.cache });
+    const fetched = await deps.fetchItems(assignment.pillar, { now, cacheDir: deps.dirs.cache });
 
     step = "shortlist";
-    const shortlist = await deps.shortlist(items, assignment, { now, home: deps.home });
+    const shortlist = await deps.shortlist(fetched.items, assignment, { now, home: deps.home, notes: fetched.notes });
 
     step = "findLicensedPhoto";
     const photo = await deps.findLicensedPhoto(shortlist, { photoDir: deps.dirs.photos });

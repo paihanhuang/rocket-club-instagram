@@ -337,15 +337,10 @@ describe("explainer and club", () => {
 });
 
 describe("notes", () => {
-  it("carries over the notes the sources attached to the items", () => {
-    const items = Object.assign(
-      [item({ title: "Falcon 9 | Starlink", startsAt: "2026-09-24T12:00:00Z" })],
-      { notes: ["sources: launchlibrary is stale — served the cache recorded 2026-09-22T00:00:00Z"] },
-    );
-
-    const result = shortlist(items, assignment("launches"), OPTS);
-
-    expect(result.notes[0]).toContain("launchlibrary is stale");
+  it("carries over the notes the sources reported, ahead of its own", () => {
+    const items = [item({ title: "Falcon 9 | Starlink", startsAt: "2026-09-24T12:00:00Z" })];
+    const result = shortlist(items, assignment("launches"), { ...OPTS, notes: ["stale cache"] });
+    expect(result.notes[0]).toBe("stale cache");
   });
 
   it("says nothing when a rule dropped nothing", () => {

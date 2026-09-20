@@ -37,7 +37,7 @@ afterEach(async () => {
 describe("launches", () => {
   it("maps a Launch Library launch onto an Item", async () => {
     const fetch = fakeFetch([launchLibraryRoute]);
-    const items = await fetchItems("launches", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("launches", { now: NOW, fetch, cacheDir });
 
     expect(items).toHaveLength(8);
     const starlink = items.find((i) => i.title.includes("Starlink Group 15-27"));
@@ -57,7 +57,7 @@ describe("launches", () => {
 
   it("carries the launch image with its license and credit", async () => {
     const fetch = fakeFetch([launchLibraryRoute]);
-    const items = await fetchItems("launches", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("launches", { now: NOW, fetch, cacheDir });
 
     const starlink = items.find((i) => i.title.includes("Starlink Group 15-27"));
     expect(starlink?.images).toHaveLength(1);
@@ -70,19 +70,19 @@ describe("launches", () => {
 
   it("falls back to the Launch Library site when a launch has no public page", async () => {
     const fetch = fakeFetch([launchLibraryRoute]);
-    const items = await fetchItems("launches", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("launches", { now: NOW, fetch, cacheDir });
 
     const longMarch = items.find((i) => i.title.includes("PIESAT-2 13-16"));
     expect(longMarch?.url).toBe("https://ll.thespacedevs.com");
   });
 
   it("gives every launch a distinct, deterministic id even without a public page", async () => {
-    const first = await fetchItems("launches", {
+    const { items: first } = await fetchItems("launches", {
       now: NOW,
       fetch: fakeFetch([launchLibraryRoute]),
       cacheDir,
     });
-    const second = await fetchItems("launches", {
+    const { items: second } = await fetchItems("launches", {
       now: new Date("2026-09-19T13:00:00Z"),
       fetch: fakeFetch([launchLibraryRoute]),
       cacheDir: await mkdtemp(join(tmpdir(), "newsroom-sources-")),
@@ -109,8 +109,8 @@ describe("launches", () => {
 describe("weekend", () => {
   it("reads the same upcoming launches as the launches pillar", async () => {
     const fetch = fakeFetch([launchLibraryRoute]);
-    const launches = await fetchItems("launches", { now: NOW, fetch, cacheDir });
-    const weekend = await fetchItems("weekend", { now: NOW, fetch, cacheDir });
+    const { items: launches } = await fetchItems("launches", { now: NOW, fetch, cacheDir });
+    const { items: weekend } = await fetchItems("weekend", { now: NOW, fetch, cacheDir });
 
     expect(weekend.map((i) => i.id)).toEqual(launches.map((i) => i.id));
     // The second pillar is served from the cache Launch Library's rate limit needs.
@@ -121,15 +121,15 @@ describe("weekend", () => {
 describe("pillars with no sourcing", () => {
   it("returns nothing and asks nothing for explainer and club", async () => {
     const fetch = fakeFetch([]);
-    expect(await fetchItems("explainer", { now: NOW, fetch, cacheDir })).toEqual([]);
-    expect(await fetchItems("club", { now: NOW, fetch, cacheDir })).toEqual([]);
+    expect(await fetchItems("explainer", { now: NOW, fetch, cacheDir })).toEqual({ items: [], notes: [] });
+    expect(await fetchItems("club", { now: NOW, fetch, cacheDir })).toEqual({ items: [], notes: [] });
     expect(fetch.calls).toHaveLength(0);
   });
 
   it("returns nothing for opportunities and neighbors until their sources are wired", async () => {
     const fetch = fakeFetch([]);
-    const opportunities = await fetchItems("opportunities", { now: NOW, fetch, cacheDir });
-    const neighbors = await fetchItems("neighbors", { now: NOW, fetch, cacheDir });
+    const { items: opportunities } = await fetchItems("opportunities", { now: NOW, fetch, cacheDir });
+    const { items: neighbors } = await fetchItems("neighbors", { now: NOW, fetch, cacheDir });
 
     expect(opportunities).toEqual([]);
     expect(neighbors).toEqual([]);
@@ -140,7 +140,7 @@ describe("pillars with no sourcing", () => {
 describe("review", () => {
   it("reads all three feeds and dates every item", async () => {
     const fetch = fakeFetch(feedRoutes);
-    const items = await fetchItems("review", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("review", { now: NOW, fetch, cacheDir });
 
     expect(fetch.calls).toHaveLength(3);
     expect(items).toHaveLength(18);
@@ -152,12 +152,12 @@ describe("review", () => {
       expect(item.url).toMatch(/^https?:\/\//);
       expect(item.title.length).toBeGreaterThan(0);
     }
-    expect(items.notes).toEqual([]);
+    expect(notes).toEqual([]);
   });
 
   it("decodes entities and strips markup out of a feed entry", async () => {
     const fetch = fakeFetch(feedRoutes);
-    const items = await fetchItems("review", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("review", { now: NOW, fetch, cacheDir });
 
     const promotion = items.find((i) => i.title.includes("Terran Orbital Promotes"));
     expect(promotion?.title).toContain("European Operations & Head");
@@ -173,12 +173,12 @@ describe("review", () => {
       { match: SPACENEWS, fixture: "rss-spacenews.xml" },
       { match: NSF, fixture: "rss-nasaspaceflight.xml" },
     ]);
-    const items = await fetchItems("review", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("review", { now: NOW, fetch, cacheDir });
 
     expect(items).toHaveLength(12);
     expect(items.map((i) => i.source)).not.toContain("nasa");
-    expect(items.notes).toHaveLength(1);
-    expect(items.notes[0]).toContain("nasa");
+    expect(notes).toHaveLength(1);
+    expect(notes[0]).toContain("nasa");
   });
 
   it("treats a bad status as a dead feed", async () => {
@@ -187,10 +187,10 @@ describe("review", () => {
       { match: SPACENEWS, body: "upstream error", status: 503 },
       { match: NSF, fixture: "rss-nasaspaceflight.xml" },
     ]);
-    const items = await fetchItems("review", { now: NOW, fetch, cacheDir });
+    const { items, notes } = await fetchItems("review", { now: NOW, fetch, cacheDir });
 
     expect(items).toHaveLength(12);
-    expect(items.notes[0]).toContain("503");
+    expect(notes[0]).toContain("503");
   });
 
   it("throws only when every feed fails", async () => {
@@ -207,9 +207,9 @@ describe("review", () => {
 describe("the disk cache", () => {
   it("serves a fresh Launch Library response without asking again", async () => {
     const fetch = fakeFetch([launchLibraryRoute]);
-    const first = await fetchItems("launches", { now: NOW, fetch, cacheDir });
+    const { items: first } = await fetchItems("launches", { now: NOW, fetch, cacheDir });
     const later = new Date(NOW.getTime() + 5 * 60 * 60_000 + 59 * 60_000);
-    const second = await fetchItems("launches", { now: later, fetch, cacheDir });
+    const { items: second } = await fetchItems("launches", { now: later, fetch, cacheDir });
 
     expect(fetch.countOf(LL2)).toBe(1);
     expect(second.map((i) => i.id)).toEqual(first.map((i) => i.id));
@@ -245,12 +245,12 @@ describe("the disk cache", () => {
 
     const broken = fakeFetch([{ match: LL2, throws: "connect ETIMEDOUT" }]);
     const muchLater = new Date(NOW.getTime() + 24 * 60 * 60_000);
-    const items = await fetchItems("launches", { now: muchLater, fetch: broken, cacheDir });
+    const { items, notes } = await fetchItems("launches", { now: muchLater, fetch: broken, cacheDir });
 
     expect(items).toHaveLength(8);
-    expect(items.notes).toHaveLength(1);
-    expect(items.notes[0]).toMatch(/stale/i);
-    expect(items.notes[0]).toContain(NOW.toISOString());
+    expect(notes).toHaveLength(1);
+    expect(notes[0]).toMatch(/stale/i);
+    expect(notes[0]).toContain(NOW.toISOString());
   });
 
   it("does not keep a response it cannot read", async () => {
@@ -259,7 +259,7 @@ describe("the disk cache", () => {
 
     // Nothing was cached, so the next run goes back to the network and recovers.
     const working = fakeFetch([launchLibraryRoute]);
-    const items = await fetchItems("launches", { now: NOW, fetch: working, cacheDir });
+    const { items, notes } = await fetchItems("launches", { now: NOW, fetch: working, cacheDir });
 
     expect(working.countOf(LL2)).toBe(1);
     expect(items).toHaveLength(8);
