@@ -1,0 +1,97 @@
+{
+ "batchcomplete": "",
+ "query": {
+  "pages": {
+   "3696464": {
+    "pageid": 3696464,
+    "ns": 6,
+    "title": "File:!mpulse Leeuwarden.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "extmetadata": {
+       "DateTime": {
+        "value": "2008-03-11 21:00:32",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+       },
+       "ObjectName": {
+        "value": "!mpulse Leeuwarden",
+        "source": "mediawiki-metadata"
+       },
+       "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+       },
+       "Categories": {
+        "value": "GFDL|License migration redundant|Self-published work|Schools in Leeuwarden",
+        "source": "commons-categories",
+        "hidden": ""
+       },
+       "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+       },
+       "ImageDescription": {
+        "value": "PJ !mpulse te Leeuwarden",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "2008-03-10",
+        "source": "commons-desc-page"
+       },
+       "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "<p><a href=\"https://en.wikipedia.org/wiki/nl:User:Wnauta\" class=\"extiw\" title=\"w:nl:User:Wnauta\">Wnauta</a> at <a href=\"https://en.wikipedia.org/wiki/nl:\" class=\"extiw\" title=\"w:nl:\">Dutch Wikipedia</a><br>\n</p>\n(<span lang=\"en\" dir=\"ltr\">Original text: <i><bdi lang=\"\"><a href=\"https://nl.wikipedia.org/wiki/Gebruiker:Wnauta\" class=\"extiw\" title=\"nl:Gebruiker:Wnauta\">Bert Mul</a></bdi></i></span>)",
+        "source": "commons-desc-page"
+       },
+       "LicenseShortName": {
+        "value": "CC BY-SA 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "UsageTerms": {
+        "value": "Creative Commons Attribution-Share Alike 3.0",
+        "source": "commons-desc-page"
+       },
+       "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "Attribution": {
+        "value": "<a href=\"https://en.wikipedia.org/wiki/nl:User:Wnauta\" class=\"extiw\" title=\"w:nl:User:Wnauta\">Wnauta</a> at <a href=\"https://en.wikipedia.org/wiki/nl:\" class=\"extiw\" title=\"w:nl:\">Dutch Wikipedia</a>",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "LicenseUrl": {
+        "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "source": "commons-desc-page"
+       },
+       "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "License": {
+        "value": "cc-by-sa-3.0",
+        "source": "commons-templates",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

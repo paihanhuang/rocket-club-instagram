@@ -1,0 +1,22 @@
+<!doctype html>
+<!--
+  The document shell every card is rendered into. The renderer fills three
+  placeholders below: the page title, the shared stylesheet (base.css) and the
+  card itself (one of the per-pillar templates).
+
+  Nothing loads over the network: the stylesheet is inlined and a photo, when
+  there is one, arrives as a data URI, so a screenshot can never race a fetch.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="dark" />
+    <title>{{TITLE}}</title>
+    <style>
+{{CSS}}
+    </style>
+  </head>
+  <body>
+{{CARD}}
+  </body>
+</html>

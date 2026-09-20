@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Drafts tomorrow's post at 20:30, while the Mac is attended.
+
+  StartCalendarInterval does not fire while the lid is shut, but launchd runs a
+  missed calendar job once at the next wake. That is the on-wake catch-up: the
+  run asks for the same day either way (see nextAssignmentDate), and the runner
+  skips a day that already has a draft, so a late wake costs nothing.
+
+  Installed by scripts/install-launchd.sh, which replaces __REPO__ and __LOGS__.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lahsrocketry.daily</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__REPO__/scripts/run.sh</string>
+    <string>daily</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__REPO__</string>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>20</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>__LOGS__/daily.log</string>
+  <key>StandardErrorPath</key>
+  <string>__LOGS__/daily.log</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

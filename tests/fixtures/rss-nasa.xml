@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:media="http://search.yahoo.com/mrss/" >
+
+<channel>
+	<title>NASA</title>
+	<atom:link href="https://www.nasa.gov/news-release/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.nasa.gov</link>
+	<description>Official National Aeronautics and Space Administration Website</description>
+	<lastBuildDate>Sun, 20 Sep 2026 04:05:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.0.5</generator>
+	<item>
+		<title>APOD: 2026 September 20 – Analemma over the Callanish Stones</title>
+		<link>https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Sun, 20 Sep 2026 04:05:00 +0000</pubDate>
+				<category><![CDATA[APOD]]></category>
+		<guid isPermaLink="false">https://science.nasa.gov/image-article/apod-2026-september-20-analemma-over-the-callanish-stones/</guid>
+
+					<description><![CDATA[APOD Science APOD APOD: 2026 September 20 –… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss   APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. Analemma over the [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="" class="hds-module hds-module-full alignfull wp-block-nasa-blocks-secondary-navigation">
+<div class="hds-secondary-navigation-wrapper z-top width-100 padding-0">
+<div id="" class="hds-secondary-navigation width-full border-bottom-1px text-center hds-color-mode-dark hds-module hds-module-full alignfull wp-block-nasa-blocks-hdsnav"><button type="button" class="hds-secondary-nav-mobile-button display-flex tablet:display-flex desktop:display-none width-full flex-align-center bg-carbon-90 border-color-carbon-80 color-spacesuit-white" aria-expanded="false" aria-controls="hds-secondary-nav-track"><span>APOD</span><svg width="16" height="16" alt="" enable-background="new 0 0 400 400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path d="m4.2 122.2 195.1 195.1 196.5-196.6-37.9-38-157.8 157.8-156.8-156.8z" /></svg></button></p>
+<div class="hds-secondary-nav-track grid-container grid-container-extrawide padding-0 tablet:padding-x-3 desktop:padding-x-2 hds-secondary-navigation-has-breadcrumbs">
+<div class="hds-secondary-navigation-breadcrumbs display-none tablet:display-none desktop:display-flex flex-align-center">
+<nav class="usa-breadcrumb" aria-label="Breadcrumbs">
+<ol class="usa-breadcrumb__list">
+<li class="usa-breadcrumb__list-item"><a href="https://science.nasa.gov/" class="usa-breadcrumb__link" rel="noopener"><span>Science</span></a></li>
+<li class="usa-breadcrumb__list-item"><a href="https://science.nasa.gov/apod/apod-index/" class="usa-breadcrumb__link" rel="noopener"><span>APOD</span></a></li>
+<li class="usa-breadcrumb__list-item usa-current" aria-current="page"><span>APOD: 2026 September 20 –…</span></li>
+</ol>
+</nav>
+</div>
+<div class="hds-secondary-navigation-menu-items">
+<nav>
+<ul class="usa-nav__primary usa-accordion flex-justify-center margin-0">
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/" rel="noopener">Today’s APOD</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/archive/" rel="noopener">Archive</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/submit/" rel="noopener">Submissions</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-index/" rel="noopener">Index</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-search/" rel="noopener">Search</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-calendar/" rel="noopener">Calendar</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/feed/apod-basic/" rel="noopener">RSS</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-education/" rel="noopener">Education</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-about/" rel="noopener">About</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://asterisk.apod.com/discuss_apod.php?date=260920" rel="noopener">Discuss</a></li>
+</ul>
+</nav>
+</div>
+<div class="hds-secondary-navigation-menu-spacer"> </div>
+</div>
+</div>
+</div>
+</div>
+<div id="" class="hds-media-detail-hero nasa-gb-align-wide width-full maxw-full margin-y-5 desktop:margin-y-7 padding-x-3 media-detail-hero--suppress-inner-media-caption hds-module alignwide wp-block-nasa-blocks-media-detail-hero">
+<div class="grid-container grid-container-block padding-x-0">
+<p class="label margin-bottom-1">APOD</p>
+<p class="heading-22 margin-top-0 margin-bottom-2">Astronomy Picture of the Day</p>
+<p class="p-md margin-top-0 margin-bottom-3 media-detail-hero__subtext">
+				<a href="/apod/archive/">Discover the cosmos!</a> Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.			</p>
+<div class="media-detail-hero__media margin-bottom-6">
+<div id="" class="hds-media hds-module wp-block-image">
+<div class="margin-left-auto margin-right-auto nasa-block-align-full">
+<div class="hds-media-wrapper margin-left-auto margin-right-auto">
+<figure class="hds-media-inner hds-cover-wrapper hds-media-ratio-fit "><a href="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=1280&#038;h=1477&#038;fit=clip&#038;crop=faces%2Cfocalpoint" rel="noopener"><img decoding="async" width="1280" height="1477" src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=1280&#038;h=1477&#038;fit=clip&#038;crop=faces%2Cfocalpoint" class="attachment-2048x2048 size-2048x2048" alt="Multiple images of the Sun trace out an analemma curve in the daytime sky above the Callanish stones." style="transform: scale(1); transform-origin: 50% 50%; object-position: 50% 50%; object-fit: cover;" block_context="nasa-block" loading="lazy" srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=1280&#038;h=1477&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1280w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=260&#038;h=300&#038;fit=crop&#038;crop=faces%2Cfocalpoint 260w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=768&#038;h=886&#038;fit=crop&#038;crop=faces%2Cfocalpoint 768w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=887&#038;h=1024&#038;fit=crop&#038;crop=faces%2Cfocalpoint 887w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=347&#038;h=400&#038;fit=crop&#038;crop=faces%2Cfocalpoint 347w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=520&#038;h=600&#038;fit=crop&#038;crop=faces%2Cfocalpoint 520w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=780&#038;h=900&#038;fit=crop&#038;crop=faces%2Cfocalpoint 780w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/CallanishAnalemma_Petricca_1280.jpg?w=1040&#038;h=1200&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1040w" sizes="auto, (max-width: 1280px) 100vw, 1280px" /></a></figure>
+</div>
+</div>
+</div></div>
+<h1 class="display-48 margin-top-0 margin-bottom-3">Analemma over the Callanish Stones</h1>
+<div class="grid-row media-detail-hero__content-row">
+<div class="grid-col-12 desktop:grid-col-6">
+<p class="p-md margin-0 media-detail-hero__description">
+							<strong>Explanation:</strong> If you went outside at the same time every day and took a picture that included <a href="https://science.nasa.gov/sun/" rel="noopener">the Sun</a>, how would the Sun’s position change? A visual answer to that question is an <a href="https://en.wikipedia.org/wiki/Analemma" rel="noopener">analemma</a>, a composite image taken from the same spot at the same time over the course of a year. The <a href="https://gmrphotographer.net/wordpress/2019/01/29/2017-solar-analemma-over-callanish/" rel="noopener">featured analemma</a> was composed from images taken every few days at noon near the village of <a href="https://en.wikipedia.org/wiki/Callanish" rel="noopener">Callanish</a> in the <a href="https://en.wikipedia.org/wiki/Outer_Hebrides" rel="noopener">Outer Hebrides</a> in <a href="https://en.wikipedia.org/wiki/Scotland" rel="noopener">Scotland</a>, <a href="https://en.wikipedia.org/wiki/United_Kingdom" rel="noopener">UK</a>. In the foreground are the <a href="https://en.wikipedia.org/wiki/Callanish_Stones" rel="noopener">Callanish</a> <a href="https://youtu.be/5mcPHxuVhWk" rel="noopener">Stones</a>, a stone circle built around 2700 BC during humanity’s <a href="https://www.history.com/articles/bronze-age" rel="noopener">Bronze Age</a>. It is not known if the placement of the <a href="https://www.youtube.com/watch?v=mkbEhp8hJN8" rel="noopener">Callanish Stones</a> has or had astronomical significance. The ultimate causes for the <a href="https://apod.nasa.gov/apod/ap160822.html" rel="noopener">figure-8</a> shape of this and all analemmas are the <a href="https://spaceplace.nasa.gov/seasons/en/" rel="noopener">tilt of the Earth axis</a> and the <a href="https://mathworld.wolfram.com/Ellipse.html" rel="noopener">ellipticity</a> of the <a href="https://science.nasa.gov/wp-content/uploads/2022/09/Equinox_Solstice-Info-Graphic_WTS.jpg" rel="noopener">Earth’s orbit</a> around the <a href="https://apod.nasa.gov/apod/ap250615.html" rel="noopener">Sun</a>. At the <a href="https://science.nasa.gov/earth/earth-observatory/winter-and-summer-solstice-6125/" rel="noopener">solstice</a>s, the Sun will appear at the top or bottom of an analemma. The featured image was taken near the December solstice and so the Sun appears near the bottom. <a href="https://apod.nasa.gov/apod/fap/ap210922.html" rel="noopener">Equinox</a>es, however, correspond to analemma middle points — not the <a href="https://unsplash.com/photos/orange-and-brown-tabby-cat-on-pavement-near-body-of-water-0iNLhORjMGM" rel="noopener">intersection point</a>. In two days there will be an <a href="https://en.wikipedia.org/wiki/Equinox" rel="noopener">equinox</a> (“equal night”), when day and night are equal over all of planet Earth. Many <a href="http://mentalfloss.com/article/59049/autumnal-equinox-traditions" rel="noopener">cultures celebrate</a> a change of season at an <a href="https://apod.nasa.gov/apod/ap240319.html" rel="noopener">equinox</a>.</p>
+<p><strong>APOD’s main NASA site is <a href="https://asterisk.apod.com/viewtopic.php?t=45023" rel="noopener">moving</a>:</strong> From <a href="https://apod.nasa.gov/" rel="noopener">apod.nasa.gov</a> to <a href="https://science.nasa.gov/apod" rel="noopener">science.nasa.gov/apod</a><br /><strong>Tomorrow’s picture: </strong><a href="https://apod.nasa.gov/apod/fap/ap260921.html" rel="noopener">open space</a>						</p>
+</p></div>
+<div class="display-none desktop:display-block desktop:grid-col-1" aria-hidden="true"></div>
+<div class="grid-col-12 desktop:grid-col-5 margin-top-3 desktop:margin-top-0">
+<table class="media-detail-hero__meta-table width-full">
+<tbody>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Date</th>
+<td class="p-sm padding-y-1">
+												September 20, 2026											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Credit &#038; Copyright:</th>
+<td class="p-sm padding-y-1">
+												<a href="https://www.astrobin.com/users/gmrphotographer/" rel="noopener">Giuseppe Petricca</a>											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Authors &#038; editors:</th>
+<td class="p-sm padding-y-1">
+												Robert Nemiroff, Jerry Bonnell, Cecilia Chirenti, Keighley Rockcliffe											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">A service of:</th>
+<td class="p-sm padding-y-1">
+												<a href="https://science.gsfc.nasa.gov/astrophysics/" target="_blank" rel="noopener">ASD</a> at <a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a> / <a href="https://www.nasa.gov/centers/goddard/" target="_blank" rel="noopener">GSFC</a>,<br /><a href="https://science.nasa.gov/learn/about-science-activation/" target="_blank" rel="noopener">NASA Science Activation</a> &#038; <a href="https://www.mtu.edu/" target="_blank" rel="noopener">Michigan Tech. U.</a>											</td>
+</tr>
+</tbody>
+</table></div>
+</p></div>
+</p></div>
+</p></div>
+<div id="" class="nasa-gb-align-wide nasa-button-link padding-y-1 padding-x-0 hds-module alignwide wp-block-nasa-blocks-related-link">
+			<a href="https://science.nasa.gov/apod/random-apod/" target="_self" class="button-primary button-primary-md link-external-false" aria-label="Random APOD Generator" rel="noopener"><br />
+			<span class="line-height-alt-1">Random APOD Generator</span><br />
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="button-primary-circle" cx="16" cy="16" r="16"></circle><path d="M8 16.956h12.604l-3.844 4.106 1.252 1.338L24 16l-5.988-6.4-1.252 1.338 3.844 4.106H8v1.912z" class="color-spacesuit-white"></path></svg><br />
+		</a></p></div>
+<div style="height:1px" aria-hidden="true" class="wp-block-spacer"></div>
+<div id="" class="hds-module alignwide wp-block-smd-block-next-prev">
+<div class="smd-next-prev-buttons-titles">
+            <a class="smd-next-prev__prev" href="https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night/" rel="noopener"></p>
+<div class="hds-next-prev-nav-arrow hds-next-prev-arrow-prev">
+                    <svg version="1.1" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 9 9"><path class="st0" d="M3.5,4.5l3.7-3.6L6.3,0L1.8,4.5L6.3,9l0.9-0.9L3.5,4.5z"></path></svg>
+                </div>
+<div class="smd-next-prev-buttons-titles__content">
+<div class="smd-next-prev-buttons-titles__prev-label">
+                        Yesterday&#8217;s Image                    </div>
+<div class="smd-next-prev-buttons-titles__prev">
+                        APOD: 2026 September 19 – A Zodiacal Night                    </div>
+</p></div>
+<p>            </a><br />
+            <a class="smd-next-prev__next smd-next-prev__disabled" href="#"></p>
+<div class="smd-next-prev-buttons-titles__content">
+<div class="smd-next-prev-buttons-titles__next-label">
+                        Tomorrow&#8217;s Image                    </div>
+<div class="smd-next-prev-buttons-titles__next">
+                                            </div>
+</p></div>
+<div class="hds-next-prev-nav-arrow hds-next-prev-arrow-next">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 9 9"><path class="st0" d="M5.5,4.5L1.8,8.1L2.7,9l4.5-4.5L2.7,0L1.8,0.9L5.5,4.5z"></path></svg>
+                </div>
+<p>            </a>
+        </div>
+</p></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>APOD: 2026 September 19 – A Zodiacal Night</title>
+		<link>https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Sat, 19 Sep 2026 04:05:00 +0000</pubDate>
+				<category><![CDATA[APOD]]></category>
+		<guid isPermaLink="false">https://science.nasa.gov/image-article/apod-2026-september-19-a-zodiacal-night/</guid>
+
+					<description><![CDATA[APOD Science APOD APOD: 2026 September 19 –… Today’s APOD Archive Submissions Index Search Calendar RSS Education About Discuss   APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. Night SkyAnnotation A [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="" class="hds-module hds-module-full alignfull wp-block-nasa-blocks-secondary-navigation">
+<div class="hds-secondary-navigation-wrapper z-top width-100 padding-0">
+<div id="" class="hds-secondary-navigation width-full border-bottom-1px text-center hds-color-mode-dark hds-module hds-module-full alignfull wp-block-nasa-blocks-hdsnav"><button type="button" class="hds-secondary-nav-mobile-button display-flex tablet:display-flex desktop:display-none width-full flex-align-center bg-carbon-90 border-color-carbon-80 color-spacesuit-white" aria-expanded="false" aria-controls="hds-secondary-nav-track"><span>APOD</span><svg width="16" height="16" alt="" enable-background="new 0 0 400 400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><path d="m4.2 122.2 195.1 195.1 196.5-196.6-37.9-38-157.8 157.8-156.8-156.8z" /></svg></button></p>
+<div class="hds-secondary-nav-track grid-container grid-container-extrawide padding-0 tablet:padding-x-3 desktop:padding-x-2 hds-secondary-navigation-has-breadcrumbs">
+<div class="hds-secondary-navigation-breadcrumbs display-none tablet:display-none desktop:display-flex flex-align-center">
+<nav class="usa-breadcrumb" aria-label="Breadcrumbs">
+<ol class="usa-breadcrumb__list">
+<li class="usa-breadcrumb__list-item"><a href="https://science.nasa.gov/" class="usa-breadcrumb__link" rel="noopener"><span>Science</span></a></li>
+<li class="usa-breadcrumb__list-item"><a href="https://science.nasa.gov/apod/apod-index/" class="usa-breadcrumb__link" rel="noopener"><span>APOD</span></a></li>
+<li class="usa-breadcrumb__list-item usa-current" aria-current="page"><span>APOD: 2026 September 19 –…</span></li>
+</ol>
+</nav>
+</div>
+<div class="hds-secondary-navigation-menu-items">
+<nav>
+<ul class="usa-nav__primary usa-accordion flex-justify-center margin-0">
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/" rel="noopener">Today’s APOD</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/archive/" rel="noopener">Archive</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/submit/" rel="noopener">Submissions</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-index/" rel="noopener">Index</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-search/" rel="noopener">Search</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-calendar/" rel="noopener">Calendar</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/feed/apod-basic/" rel="noopener">RSS</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-education/" rel="noopener">Education</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://science.nasa.gov/apod/apod-about/" rel="noopener">About</a></li>
+<li class="usa-nav__primary-item "><a class="usa-nav__link" href="https://asterisk.apod.com/discuss_apod.php?date=260919" rel="noopener">Discuss</a></li>
+</ul>
+</nav>
+</div>
+<div class="hds-secondary-navigation-menu-spacer"> </div>
+</div>
+</div>
+</div>
+</div>
+<div id="" class="hds-media-detail-hero nasa-gb-align-wide width-full maxw-full margin-y-5 desktop:margin-y-7 padding-x-3 media-detail-hero--suppress-inner-media-caption hds-module alignwide wp-block-nasa-blocks-media-detail-hero">
+<div class="grid-container grid-container-block padding-x-0">
+<p class="label margin-bottom-1">APOD</p>
+<p class="heading-22 margin-top-0 margin-bottom-2">Astronomy Picture of the Day</p>
+<p class="p-md margin-top-0 margin-bottom-3 media-detail-hero__subtext">
+				<a href="/apod/archive/">Discover the cosmos!</a> Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.			</p>
+<div class="media-detail-hero__media margin-bottom-6">
+<div class="wp-block-smd-block-image-rollover smd-image-rollover hds-module hds-media smd-image-rollover--clickable-indicators">
+<div class="smd-image-rollover__alignment margin-left-auto margin-right-auto nasa-block-align-full">
+<div class="smd-image-rollover__frame"><img loading="lazy" decoding="async" width="2060" height="1393" src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=2060&#038;h=1393&#038;fit=clip&#038;crop=faces%2Cfocalpoint" class="smd-image-rollover__image smd-image-rollover__image--primary" alt="Two people are seated looking up at the night sky." srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=2060&#038;h=1393&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2060w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=300&#038;h=203&#038;fit=crop&#038;crop=faces%2Cfocalpoint 300w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=768&#038;h=519&#038;fit=crop&#038;crop=faces%2Cfocalpoint 768w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=1024&#038;h=692&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1024w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=1536&#038;h=1039&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1536w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=2048&#038;h=1385&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2048w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=400&#038;h=270&#038;fit=crop&#038;crop=faces%2Cfocalpoint 400w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=600&#038;h=406&#038;fit=crop&#038;crop=faces%2Cfocalpoint 600w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=900&#038;h=609&#038;fit=crop&#038;crop=faces%2Cfocalpoint 900w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=1200&#038;h=811&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1200w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSP.jpg?w=2000&#038;h=1352&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2000w" sizes="auto, (max-width: 2060px) 100vw, 2060px" /><img loading="lazy" decoding="async" width="2060" height="1393" src="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=2060&#038;h=1393&#038;fit=clip&#038;crop=faces%2Cfocalpoint" class="smd-image-rollover__image smd-image-rollover__image--secondary" alt="Two people are seated looking up into the night sky. Jupiter, M44, and Mars are indicated with text labels." srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=2060&#038;h=1393&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2060w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=300&#038;h=203&#038;fit=crop&#038;crop=faces%2Cfocalpoint 300w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=768&#038;h=519&#038;fit=crop&#038;crop=faces%2Cfocalpoint 768w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=1024&#038;h=692&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1024w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=1536&#038;h=1039&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1536w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=2048&#038;h=1385&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2048w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=400&#038;h=270&#038;fit=crop&#038;crop=faces%2Cfocalpoint 400w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=600&#038;h=406&#038;fit=crop&#038;crop=faces%2Cfocalpoint 600w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=900&#038;h=609&#038;fit=crop&#038;crop=faces%2Cfocalpoint 900w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=1200&#038;h=811&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1200w, https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/2026-09-09ZodiacalLightHSPannotated.jpg?w=2000&#038;h=1352&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2000w" sizes="auto, (max-width: 2060px) 100vw, 2060px" /></p>
+<div class="toggle-button-container padding-1"><button type="button" class="toggle-view-before-button margin-right-1px is-active" aria-pressed="true"><span class="toggle-view-before-label">Night Sky</span></button><button type="button" class="toggle-view-after-button margin-left-1px" aria-pressed="false"><span class="toggle-view-after-label">Annotation</span></button></div>
+</div>
+</div>
+</div></div>
+<h1 class="display-48 margin-top-0 margin-bottom-3">A Zodiacal Night</h1>
+<div class="grid-row media-detail-hero__content-row">
+<div class="grid-col-12 desktop:grid-col-6">
+<p class="p-md margin-0 media-detail-hero__description">
+							<strong>Explanation:</strong> <a href="https://earthsky.org/astronomy-essentials/everything-you-need-to-know-zodiacal-light-or-false-dusk" rel="noopener">Also known as the false dawn</a>, a luminous band of zodiacal light is captured in this dark night skyscape. The serene view was recorded just before the beginning of astronomical <a href="https://en.wikipedia.org/wiki/Twilight" rel="noopener">twilight</a> during September’s star party at the remote Hanle Dark Sky Reserve, Ladakh, India, planet Earth. At about 4,500 meters altitude, the dark sky reserve <a href="https://www.bbc.com/travel/article/20250829-the-himalayan-village-where-you-can-see-the-cosmos" rel="noopener">presents a haven</a> for hardy stargazing and astrophotography enthusiasts. While meteors streak through the night, bright planet Jupiter appears immersed in the faint zodiacal glow near the eastern horizon. Follow the zodiacal band toward the zenith to find open star cluster M44 and a yellowish tinged planet Mars near the center of the frame. In fact, <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JE006509" rel="noopener">serendipitous</a> detections of interplanetary dust by NASA’s Juno spacecraft suggest Mars itself is the source of dust that back scatters sunlight and creates <a href="https://www.nasa.gov/feature/goddard/2021/serendipitous-juno-spacecraft-detections-shatter-ideas-about-origin-of-zodiacal-light" rel="noopener">zodiacal light in planet Earth’s night.</a></p>
+<p><strong>APOD’s main NASA site is <a href="https://asterisk.apod.com/viewtopic.php?t=45023" rel="noopener">moving</a>:</strong> From <a href="https://apod.nasa.gov/" rel="noopener">apod.nasa.gov</a> to <a href="https://science.nasa.gov/apod" rel="noopener">science.nasa.gov/apod</a><br /><strong>Tomorrow’s picture: </strong><a href="https://apod.nasa.gov/apod/fap/ap260920.html" rel="noopener">only sunny days</a>						</p>
+</p></div>
+<div class="display-none desktop:display-block desktop:grid-col-1" aria-hidden="true"></div>
+<div class="grid-col-12 desktop:grid-col-5 margin-top-3 desktop:margin-top-0">
+<table class="media-detail-hero__meta-table width-full">
+<tbody>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Date</th>
+<td class="p-sm padding-y-1">
+												September 19, 2026											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Credit &#038; Copyright:</th>
+<td class="p-sm padding-y-1">
+												<a href="http://ajaytalwar.com/" rel="noopener">Neelam and Ajay Talwar</a> (<a href="https://twanight.org/" rel="noopener">TWAN</a>)											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">Authors &#038; editors:</th>
+<td class="p-sm padding-y-1">
+												Jerry Bonnell, Cecilia Chirenti, Robert Nemiroff, Keighley Rockcliffe											</td>
+</tr>
+<tr class="media-detail-hero__meta-row">
+<th scope="row" class="label padding-y-1">A service of:</th>
+<td class="p-sm padding-y-1">
+												<a href="https://science.gsfc.nasa.gov/astrophysics/" target="_blank" rel="noopener">ASD</a> at <a href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a> / <a href="https://www.nasa.gov/centers/goddard/" target="_blank" rel="noopener">GSFC</a>,<br /><a href="https://science.nasa.gov/learn/about-science-activation/" target="_blank" rel="noopener">NASA Science Activation</a> &#038; <a href="https://www.mtu.edu/" target="_blank" rel="noopener">Michigan Tech. U.</a>											</td>
+</tr>
+</tbody>
+</table></div>
+</p></div>
+</p></div>
+</p></div>
+<div id="" class="nasa-gb-align-wide nasa-button-link padding-y-1 padding-x-0 hds-module alignwide wp-block-nasa-blocks-related-link">
+			<a href="https://science.nasa.gov/apod/random-apod/" target="_self" class="button-primary button-primary-md link-external-false" aria-label="Random APOD Generator" rel="noopener"><br />
+			<span class="line-height-alt-1">Random APOD Generator</span><br />
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="button-primary-circle" cx="16" cy="16" r="16"></circle><path d="M8 16.956h12.604l-3.844 4.106 1.252 1.338L24 16l-5.988-6.4-1.252 1.338 3.844 4.106H8v1.912z" class="color-spacesuit-white"></path></svg><br />
+		</a></p></div>
+<div style="height:1px" aria-hidden="true" class="wp-block-spacer"></div>
+<div id="" class="hds-module alignwide wp-block-smd-block-next-prev">
+<div class="smd-next-prev-buttons-titles">
+            <a class="smd-next-prev__prev" href="https://science.nasa.gov/image-article/apod-2026-september-18-messier-33-the-triangulum-galaxy/" rel="noopener"></p>
+<div class="hds-next-prev-nav-arrow hds-next-prev-arrow-prev">
+                    <svg version="1.1" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 9 9"><path class="st0" d="M3.5,4.5l3.7-3.6L6.3,0L1.8,4.5L6.3,9l0.9-0.9L3.5,4.5z"></path></svg>
+                </div>
+<div class="smd-next-prev-buttons-titles__content">
+<div class="smd-next-prev-buttons-titles__prev-label">
+                        Yesterday&#8217;s Image                    </div>
+<div class="smd-next-prev-buttons-titles__prev">
+                        APOD: 2026 September 18 – Messier 33: The Triangulum Galaxy                    </div>
+</p></div>
+<p>            </a><br />
+            <a class="smd-next-prev__next smd-next-prev__disabled" href="#"></p>
+<div class="smd-next-prev-buttons-titles__content">
+<div class="smd-next-prev-buttons-titles__next-label">
+                        Tomorrow&#8217;s Image                    </div>
+<div class="smd-next-prev-buttons-titles__next">
+                                            </div>
+</p></div>
+<div class="hds-next-prev-nav-arrow hds-next-prev-arrow-next">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 9 9"><path class="st0" d="M5.5,4.5L1.8,8.1L2.7,9l4.5-4.5L2.7,0L1.8,0.9L5.5,4.5z"></path></svg>
+                </div>
+<p>            </a>
+        </div>
+</p></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>NASA Invites Media to Albania Artemis Accords Signing Ceremony</title>
+		<link>https://www.nasa.gov/news-release/nasa-invites-media-to-albania-artemis-accords-signing-ceremony/</link>
+		
+		<dc:creator><![CDATA[Jennifer M. Dooren]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2026 19:56:08 +0000</pubDate>
+				<category><![CDATA[Office of International and Interagency Relations (OIIR)]]></category>
+		<category><![CDATA[Artemis Accords]]></category>
+		<guid isPermaLink="false">https://www.nasa.gov/?post_type=press-release&#038;p=1048788</guid>
+
+					<description><![CDATA[The Republic of Albania will sign the Artemis Accords during a ceremony at 12 p.m. EDT on Monday, Sept. 21, at NASA Headquarters in Washington, becoming the 73rd country signatory. NASA Deputy Administrator Matt Anderson will host Albania’s Minister for Europe and Foreign Affairs Ferit Hoxha and Ambassador of the Republic of Albania to the [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="" class="hds-media hds-module wp-block-image"><div class="margin-left-auto margin-right-auto nasa-block-align-inline"><div class="hds-media-wrapper margin-left-auto margin-right-auto"><figure class="hds-media-inner hds-cover-wrapper hds-media-ratio-fit "><a href="https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg"><img fetchpriority="high" decoding="async" width="1080" height="1079" src="https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?w=1080" class="attachment-2048x2048 size-2048x2048" alt="NASA meatball" style="transform: scale(1); transform-origin: 50% 50%; object-position: 50% 50%; object-fit: cover;" block_context="nasa-block" loading="eager" srcset="https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg 1080w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=150,150 150w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=300,300 300w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=768,767 768w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=1024,1024 1024w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=50,50 50w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=100,100 100w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=200,200 200w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=400,400 400w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=600,600 600w, https://www.nasa.gov/wp-content/uploads/2025/09/cropped-nasa-meatball-1.jpg?resize=900,900 900w" sizes="auto, (max-width: 1080px) 100vw, 1080px" /></a></figure><figcaption class="hds-caption padding-y-2"><div class="hds-credits">Credit: NASA </div></figcaption></div></div></div>
+
+
+<p class="wp-block-paragraph">The Republic of Albania will sign the Artemis Accords during a ceremony at 12 p.m. EDT on Monday, Sept. 21, at NASA Headquarters in Washington, becoming the 73rd country signatory.</p>
+
+
+
+<p class="wp-block-paragraph">NASA Deputy Administrator Matt Anderson will host Albania’s Minister for Europe and Foreign Affairs Ferit Hoxha and Ambassador of the Republic of Albania to the United States Ervin Bushati for the ceremony, together with U.S. Department of State officials.</p>
+
+
+
+<p class="wp-block-paragraph">This event is in person only. Media interested in attending must RSVP no later than 10 a.m. on Sept. 21 to: <a href="mailto:hq-media@mail.nasa.gov">hq-media@mail.nasa.gov</a>. NASA’s <a href="https://www.nasa.gov/general/nasa-agencywide-media-accreditation-policy/">media accreditation policy</a> is online.</p>
+
+
+
+<p class="wp-block-paragraph">In 2020, during the first Trump Administration, the United States, led by NASA and the State Department, joined with seven other founding nations to establish the Artemis Accords, responding to the growing interest in lunar activities by both governments and private companies.</p>
+
+
+
+<p class="wp-block-paragraph">The Artemis Accords introduced the first set of practical principles aimed at enhancing the safety, transparency, and coordination of civil space exploration on the Moon, Mars, and beyond.</p>
+
+
+
+<p class="wp-block-paragraph">Learn more about the Artemis Accords at:</p>
+
+
+
+<p class="has-text-align-center wp-block-paragraph"><a href="https://www.nasa.gov/artemis-accords"><strong>https://www.nasa.gov/artemis-accords</strong></a></p>
+
+
+
+<p class="has-text-align-center wp-block-paragraph">-end-</p>
+
+
+
+<p class="wp-block-paragraph">Camille Gallo / Elizabeth Shaw&nbsp;<br>Headquarters, Washington&nbsp;<br>202-358-1600&nbsp;<br><a href="mailto:camille.m.gallo@nasa.gov" target="_blank" rel="noreferrer noopener">camille.m.gallo@nasa.gov</a>&nbsp;/&nbsp;<a href="mailto:elizabeth.a.shaw@nasa.gov" target="_blank" rel="noreferrer noopener">elizabeth.a.shaw@nasa.gov</a>&nbsp;</p>
+
+
+<div id="" class="nasa-gb-align-full width-full maxw-full padding-x-3 padding-y-0 article_a hds-module hds-module-full alignfull wp-block-nasa-blocks-credits-and-details">
+<section class="padding-x-0 padding-top-5 padding-bottom-2 desktop:padding-top-7 desktop:padding-bottom-9">
+	<div class="grid-row grid-container maxw-widescreen padding-0">
+		<div class="grid-col-12 desktop:grid-col-2 padding-right-4 margin-bottom-5 desktop:margin-bottom-0">
+			<div class="padding-top-3 border-top-1px border-color-carbon-black">
+				<div class="margin-bottom-2">
+					<h2 class="heading-14">Share</h2>
+				</div>
+				<div class="padding-bottom-2">
+					<ul class="social-icons social-icons-round">
+						<li class="social-icon social-icon-x">
+							<a href="https://x.com/intent/tweet?via=NASA&#038;text=NASA%20Invites%20Media%20to%20Albania%20Artemis%20Accords%20Signing%20Ceremony&#038;url=https%3A%2F%2Fwww.nasa.gov%2Fnews-release%2Fnasa-invites-media-to-albania-artemis-accords-signing-ceremony%2F" aria-label="Share on X.">
+								<svg width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white"/></svg>
+							</a>
+						</li>
+						<li class="social-icon social-icon-facebook">
+							<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.nasa.gov%2Fnews-release%2Fnasa-invites-media-to-albania-artemis-accords-signing-ceremony%2F" aria-label="Share on Facebook.">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+							</a>
+						</li>
+						<li class="social-icon social-icon-linkedin">
+							<a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.nasa.gov%2Fnews-release%2Fnasa-invites-media-to-albania-artemis-accords-signing-ceremony%2F" aria-label="Share on LinkedIn.">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+							</a>
+						</li>
+						<li class="social-icon social-icon-rss">
+							<a href="/feed/" aria-label="Subscribe to RSS feed.">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" aria-hidden="true"><path d="M493 652H392c0-134-111-244-244-244V307c189 0 345 156 345 345zm71 0c0-228-188-416-416-416V132c285 0 520 235 520 520z"/><circle cx="219" cy="581" r="71"/></svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="grid-col-12 desktop:grid-col-5 padding-right-4 margin-bottom-5 desktop:margin-bottom-0">
+			<div class="padding-top-3 border-top-1px border-color-carbon-black">
+				<div class="margin-bottom-2">
+					<h2 class="heading-14">Details</h2>
+				</div>
+				<div class="grid-row margin-bottom-3">
+					<div class="grid-col-4">
+						<div class="subheading">Last Updated</div>
+					</div>
+					<div class="grid-col-8">Sep 18, 2026</div>
+				</div>
+			<div class="grid-row margin-bottom-3"><div class="grid-col-4"><div class="subheading">Editor</div></div><div class="grid-col-8">Jennifer M. Dooren</div></div><div class="grid-row"><div class="grid-col-4"><div class="subheading">Location</div></div><div class="grid-col-8"><a class="hds-location-tag-name" href="https://www.nasa.gov/nasa-headquarters/"><span class="hds-meta-heading">NASA Headquarters</span></a></div></div>			</div>
+		</div>
+	<div class="grid-col-12 desktop:grid-col-5 padding-right-4 margin-bottom-5 desktop:margin-bottom-0"><div class="padding-top-3 border-top-1px border-color-carbon-black "><div class="margin-bottom-2"><h2 class="heading-14">Related Terms</h2></div><ul class="article-tags"><li class="article-tag"><a href="https://www.nasa.gov/organizations/oiir/">Office of International and Interagency Relations (OIIR)</a></li><li class="article-tag"><a href="https://www.nasa.gov/artemis-accords/">Artemis Accords</a></li></ul></div></div>
+	</div>
+</section>
+	</div>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>NASA-JAXA XRISM Mission Sees Pulsar Gathering Companion’s ‘Wind’</title>
+		<link>https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind/</link>
+		
+		<dc:creator><![CDATA[]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2026 18:02:53 +0000</pubDate>
+				<category><![CDATA[Astrophysics]]></category>
+		<category><![CDATA[Electromagnetic Spectrum]]></category>
+		<category><![CDATA[Goddard Space Flight Center]]></category>
+		<category><![CDATA[Neutron Stars]]></category>
+		<category><![CDATA[Pulsars]]></category>
+		<category><![CDATA[Stars]]></category>
+		<category><![CDATA[The Universe]]></category>
+		<category><![CDATA[X-ray Astronomy]]></category>
+		<category><![CDATA[X-ray Binaries]]></category>
+		<category><![CDATA[XRISM (X-Ray Imaging and Spectroscopy Mission)]]></category>
+		<guid isPermaLink="false">https://science.nasa.gov/missions/xrism/xrism-sees-pulsar-gathering-companions-wind/</guid>
+
+					<description><![CDATA[Using data from the Japan-led XRISM (X-ray Imaging and Spectroscopy Mission) observatory, astronomers have directly observed a giant star’s outflow, called a stellar wind, being captured by its compact companion and providing the power source for strong X-ray flares. The research is part of NASA’s exploration of the extreme universe to better understand how the […]]]></description>
+										<content:encoded><![CDATA[<div id="" class="padding-top-5 padding-bottom-3 width-full maxw-full hds-module hds-module-full alignfull wp-block-nasa-blocks-article-intro">
+<div class="width-full maxw-full article-header">
+<div class="margin-bottom-2 width-full maxw-full">
+<p class="label carbon-60 margin-0 margin-bottom-3 padding-0">5 min read</p>
+<h1 class="display-48 margin-bottom-2">NASA-JAXA XRISM Mission Sees Pulsar Gathering Companion’s ‘Wind’</h1>
+</div>
+</div>
+</div>
+<p class="wp-block-paragraph">Using data from the Japan-led XRISM (X-ray Imaging and Spectroscopy Mission) observatory, astronomers have directly observed a giant star’s outflow, called a stellar wind, being captured by its compact companion and providing the power source for strong X-ray flares. The research is part of NASA’s exploration of the extreme universe to better understand how the cosmos works.<br /> <br />“We’ve never before seen clear indications of wind plasma falling onto a compact object,” said Roi Rahin, a researcher at <a href="https://umbc.edu" rel="noopener">UMBC</a> (University of Maryland, Baltimore County) and <a href="https://www.nasa.gov/goddard/" rel="noopener">NASA’s Goddard Space Flight Center</a> in Greenbelt, Maryland. “We can now test our understanding of these processes in much greater detail.”<br /> <br />A <a href="https://www.science.org/doi/10.1126/sciadv.aef6686" rel="noopener">paper</a> describing the findings published Friday in the journal Science Advances.<br /> <br />The target system is BP Crucis, a high-mass X-ray binary located about 13,000 light-years away in the southern constellation Crux. The primary star, known as Wray 977, is a blue hypergiant about 40 times the Sun’s mass and 60 times its size. It’s so big, hot, and luminous that ionized gas constantly streams away from it, a phenomenon astronomers call a stellar wind.</p>
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube">
+<div class="wp-block-embed__wrapper">
+ <iframe loading="lazy" title="NASA-JAXA XRISM Mission Sees Pulsar Accreting Companion&apos;s &apos;Wind&apos;" width="500" height="281" src="https://www.youtube.com/embed/voXgZFQ4aLY?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div><figcaption class="wp-element-caption">This artist’s concept of the BP Crucis system follows the pulsar on a passage through the dense stream of plasma flowing from its companion, a blue hypergiant 40 times the Sun’s mass. During each four-day passage, the pulsar’s X-ray brightness flares as it pulls in some of the gas. At first, the gas forms a messy, turbulent accretion disk around the pulsar, and plasma spirals down to it. But as the pulsar moves deeper into the stream, there’s not enough angular momentum to support the disk, and it breaks up. At this point, plasma falls straight onto the pulsar. Later, as the pulsar near the end of its passage, a messy accretion disk rebuilds, this time spinning in the opposite direction of the earlier disk due to the stream’s flow. <br /><strong>NASA’s Goddard Space Flight Center/Conceptual Image Laboratory</strong></figcaption></figure>
+<div id="" class="nasa-gb-align-center nasa-button-link padding-y-1 padding-x-0 hds-module aligncenter wp-block-nasa-blocks-related-link">
+			<a href="https://svs.gsfc.nasa.gov/15099/" target="_self" class="button-primary button-primary-md link-external-true" aria-label="Download high-resolution video and images from NASA&#039;s Scientific Visualization Studio" rel="noopener"><br />
+			<span class="line-height-alt-1">Download high-resolution video and images from NASA&#8217;s Scientific Visualization Studio</span><br />
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="button-primary-circle" cx="16" cy="16" r="16"></circle><path d="M8 16.956h12.604l-3.844 4.106 1.252 1.338L24 16l-5.988-6.4-1.252 1.338 3.844 4.106H8v1.912z" class="color-spacesuit-white"></path></svg><br />
+		</a></p></div>
+<p class="has-text-align-left wp-block-paragraph">The supergiant’s companion is a tiny-but-mighty neutron star called GX 301-2. The crushed core of a star that long ago exploded as a supernova, it packs more than the Sun’s mass into a ball roughly 12 miles (20 kilometers) across. Rotating every 11 minutes, it sweeps an X-ray beam toward Earth, which classifies it as a pulsar.   <br /> <br />Twice during the pulsar’s 41.5-day orbit, near its closest and farthest points from the primary star, strong X-ray flares occur for several days. Astronomers think the pulsar’s gravitational influence on the star creates an especially dense stream of plasma. Flares occur when the pulsar traverses this stream and captures some of its matter. The strongest eruptions happen closer to the star, where the stream is denser. <br /> <br />The researchers targeted the system with <a href="https://nasa.gov/xrism" rel="noopener">XRISM</a> on Feb. 1, 2025, observing it for about 16 hours near the end of one of these stronger flares. The observatory’s Resolve instrument, jointly developed by <a href="https://www.nasa.gov" rel="noopener">NASA</a> and <a href="https://global.jaxa.jp" rel="noopener">JAXA</a> (Japan Aerospace Exploration Agency), captured highly detailed X-ray spectra, revealing rapidly changing emission and absorption lines. In particular, absorption lines from highly ionized iron revealed the speed and direction of plasma relatively close to the pulsar. </p>
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube">
+<div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Spectroscopy, Explained" width="500" height="281" src="https://www.youtube.com/embed/_1mpHBAXh1c?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div><figcaption class="wp-element-caption">Watch to learn about spectroscopy, the dance between matter and light, and how NASA missions using it help scientists answer big questions about our universe. <br /><strong>NASA’s Goddard Space Flight Center</strong></figcaption></figure>
+<div id="" class="nasa-gb-align-center nasa-button-link padding-y-1 padding-x-0 hds-module aligncenter wp-block-nasa-blocks-related-link">
+			<a href="https://svs.gsfc.nasa.gov/12956" target="_self" class="button-primary button-primary-md link-external-true" aria-label="Download high-resolution video from NASA&#039;s Scientific Visualization Studio" rel="noopener"><br />
+			<span class="line-height-alt-1">Download high-resolution video from NASA&#8217;s Scientific Visualization Studio</span><br />
+			<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle class="button-primary-circle" cx="16" cy="16" r="16"></circle><path d="M8 16.956h12.604l-3.844 4.106 1.252 1.338L24 16l-5.988-6.4-1.252 1.338 3.844 4.106H8v1.912z" class="color-spacesuit-white"></path></svg><br />
+		</a></p></div>
+<p class="wp-block-paragraph">When Rahin first saw these spectra, he realized he hadn’t seen anything like them before. He scoured the scientific literature for similar observations and came up empty-handed.</p>
+<p class="wp-block-paragraph">“It was clear that these observations were groundbreaking, but at the same time this meant the analysis had to be especially detailed,” said Nazma Islam, a co-author formerly at UMBC and NASA Goddard and now an assistant professor at Manipal Centre for Natural Sciences, India. “We could see how the dense stream of plasma acts very close to the neutron star.”</p>
+<div id="" class="hds-media hds-module wp-block-image">
+<div class="margin-left-auto margin-right-auto nasa-block-align-wide">
+<div class="hds-media-wrapper margin-left-auto margin-right-auto">
+<figure class="hds-media-inner hds-cover-wrapper hds-media-ratio-fit " style="--hds-image-contain-bg:#ffffff;"><a href="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=2020&#038;h=1080&#038;fit=clip&#038;crop=faces%2Cfocalpoint" rel="noopener"><img fetchpriority="high" decoding="async" width="2020" height="1080" src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=2020&#038;h=1080&#038;fit=clip&#038;crop=faces%2Cfocalpoint" class="attachment-2048x2048 size-2048x2048" alt="XRISM Resolve absorption spectrum of BP Crucis" style="transform: scale(1); transform-origin: 50% 50%; object-position: 50% 50%; object-fit: cover;" block_context="nasa-block" loading="eager" srcset="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=2020&#038;h=1080&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2020w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=300&#038;h=160&#038;fit=crop&#038;crop=faces%2Cfocalpoint 300w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=768&#038;h=411&#038;fit=crop&#038;crop=faces%2Cfocalpoint 768w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=1024&#038;h=547&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1024w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=1536&#038;h=821&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1536w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=400&#038;h=214&#038;fit=crop&#038;crop=faces%2Cfocalpoint 400w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=600&#038;h=321&#038;fit=crop&#038;crop=faces%2Cfocalpoint 600w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=900&#038;h=481&#038;fit=crop&#038;crop=faces%2Cfocalpoint 900w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=1200&#038;h=642&#038;fit=crop&#038;crop=faces%2Cfocalpoint 1200w, https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spectrum_med.jpg?w=2000&#038;h=1069&#038;fit=crop&#038;crop=faces%2Cfocalpoint 2000w" sizes="auto, (max-width: 2020px) 100vw, 2020px" /></a></figure><figcaption class="hds-caption padding-y-2">
+<div class="hds-caption-text p-sm margin-0">The Resolve instrument aboard the NASA-JAXA XRISM observatory captured this high-resolution X-ray spectrum of BP Crucis. Prominent iron absorption lines (dashed) have shifted to lower energies (red lines), which indicates both the direction and velocity of the gas. The observations indicate the gas is moving toward the pulsar at about 335,000 mph (540,000 kph). Data and error bars are shown in gray, with a model spectrum in light blue. Roman numerals indicate the ionization state of iron atoms (the number of electrons they’ve lost to produce each spectral line).</div>
+<div class="hds-credits">NASA’s Goddard Space Flight Center, JAXA/NASA, Rahin et al. 2026</div>
+</figcaption></div>
+</div>
+</div>
+<p class="wp-block-paragraph">Rahin and his team show that the iron absorption lines they observed are displaced to lower energies than they would be if measured in a laboratory. This displacement, called a redshift, indicates motion away from the observer, which means the gas is flowing toward the pulsar. The extent of the redshift indicates the plasma’s velocity. The team’s analysis indicates gas is racing toward the pulsar at speeds of around 335,000 mph (540,000 kph).<br /> <br />Here’s what the researchers think is going on: As the pulsar enters the stream, it sweeps up gas into a thick, messy, turbulent disk. This gas spirals down to the pulsar, heats up, and emits X-rays to power the flares.<br /> <br />As the pulsar pushes farther into the stream, the turbulent disk breaks down. Astronomers suspect that as the pulsar moves more directly into the flow, the stream no longer has the angular momentum required to maintain the disk. Once the disk dissipates, plasma flows directly onto the neutron star. Observations with XRISM occurred near the end of this phase.</p>
+<p class="wp-block-paragraph">Then, as the pulsar nears the end of the stream, a messy disk briefly returns, this time spinning in the opposite direction. And then it, too, disappears as the pulsar exits. In all, the pulsar takes about four days to transit the stream.</p>
+<p class="wp-block-paragraph">“The BP Crucis system is an ideal laboratory for studying wind-fed pulsar accretion, and XRISM’s sensitive, high-resolution Resolve spectrometer is an ideal instrument for advancing our understanding of the processes involved,” said Brian Williams, the mission’s project scientist at NASA Goddard.  </p>
+<p class="wp-block-paragraph">To learn more about the XRISM mission, visit:</p>
+<p class="has-text-align-center wp-block-paragraph"><strong><a href="https://nasa.gov/xrism" rel="noopener">https://nasa.gov/xrism</a></strong></p>
+<div id="" class="hds-social-media hds-social-media--horizontal grid-container grid-container-block nasa-gb-align- margin-y-0 padding-y-5 padding-x-3 desktop:padding-x-0 font-weight-bold hds-module align wp-block-nasa-blocks-social-media-links">
+<div class="display-flex flex-align-center padding-y-1" id="social-facebook">
+<div class="circle-4 minw-4 display-flex flex-align-center flex-justify-center" style="background-color: #4267B2;">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-labelledby="facebookIconTitle"><title id="facebookIconTitle">Facebook logo</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>			</div>
+<div class="hds-social-media-items padding-left-2">
+				<a target="_blank" class="margin-right-2" href="https://facebook.com/NASAUniverse" aria-label="Go to @NASAUniverse on facebook" rel="noopener">@NASAUniverse</a>			</div>
+</p></div>
+<div class="display-flex flex-align-center padding-y-1" id="social-twitter">
+<div class="circle-4 minw-4 display-flex flex-align-center flex-justify-center" style="background-color: #000000;">
+				<svg width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white"/></svg>			</div>
+<div class="hds-social-media-items padding-left-2">
+				<a target="_blank" class="margin-right-2" href="https://x.com/NASAUniverse" aria-label="Go to @NASAUniverse on twitter">@NASAUniverse</a>			</div>
+</p></div>
+<div class="display-flex flex-align-center padding-y-1" id="social-instagram">
+<div class="circle-4 minw-4 display-flex flex-align-center flex-justify-center" style="background-color: #833AB4;">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="169.063px" height="169.063px" viewBox="0 0 169.063 169.063" style="enable-background:new 0 0 169.063 169.063;" xml:space="preserve" aria-labelledby="instagramIconTitle"><title id="instagramIconTitle">Instagram logo</title><g> <path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752 c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407 c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752 c17.455,0,31.656,14.201,31.656,31.655V122.407z"/> <path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561 C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561 c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z"/> <path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78 c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78 C135.661,29.421,132.821,28.251,129.921,28.251z"/></g></svg>			</div>
+<div class="hds-social-media-items padding-left-2">
+				<a target="_blank" class="margin-right-2" href="https://instagram.com/NASAUniverse" aria-label="Go to @NASAUniverse on instagram" rel="noopener">@NASAUniverse</a>			</div>
+</p></div>
+</p></div>
+<div id="" class="nasa-gb-align-full width-full maxw-full padding-x-3 padding-y-0 article_a hds-module hds-module-full alignfull wp-block-nasa-blocks-credits-and-details">
+<section class="padding-x-0 padding-top-5 padding-bottom-2 desktop:padding-top-7 desktop:padding-bottom-9">
+<div class="grid-row grid-container maxw-widescreen padding-0">
+<div class="grid-col-12 desktop:grid-col-2 padding-right-4 margin-bottom-5 desktop:margin-bottom-0">
+<div class="padding-top-3 border-top-1px border-color-carbon-black">
+<div class="margin-bottom-2">
+<h2 class="heading-14">Share</h2>
+</p></div>
+<div class="padding-bottom-2">
+<ul class="social-icons social-icons-round">
+<li class="social-icon social-icon-x">
+							<a href="https://x.com/intent/tweet?via=NASA&#038;text=NASA-JAXA%20XRISM%20Mission%20Sees%20Pulsar%20Gathering%20Companion%E2%80%99s%20%E2%80%98Wind%E2%80%99&#038;url=https%3A%2F%2Fscience.nasa.gov%2Fmissions%2Fxrism%2Fxrism-sees-pulsar-gathering-companions-wind%2F" aria-label="Share on X."><br />
+								<svg width="1200" height="1227" viewBox="0 0 1200 1227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white"/></svg><br />
+							</a>
+						</li>
+<li class="social-icon social-icon-facebook">
+							<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fscience.nasa.gov%2Fmissions%2Fxrism%2Fxrism-sees-pulsar-gathering-companions-wind%2F" aria-label="Share on Facebook." rel="noopener"><br />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg><br />
+							</a>
+						</li>
+<li class="social-icon social-icon-linkedin">
+							<a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fscience.nasa.gov%2Fmissions%2Fxrism%2Fxrism-sees-pulsar-gathering-companions-wind%2F" aria-label="Share on LinkedIn." rel="noopener"><br />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg><br />
+							</a>
+						</li>
+<li class="social-icon social-icon-rss">
+							<a href="/feed/" aria-label="Subscribe to RSS feed."><br />
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" aria-hidden="true"><path d="M493 652H392c0-134-111-244-244-244V307c189 0 345 156 345 345zm71 0c0-228-188-416-416-416V132c285 0 520 235 520 520z"/><circle cx="219" cy="581" r="71"/></svg><br />
+							</a>
+						</li>
+</ul></div>
+</p></div>
+</p></div>
+<div class="grid-col-12 desktop:grid-col-5 padding-right-4 margin-bottom-5 desktop:margin-bottom-0">
+<div class="padding-top-3 border-top-1px border-color-carbon-black">
+<div class="margin-bottom-2">
+<h2 class="heading-14">Details</h2>
+</p></div>
+<div class="grid-row margin-bottom-3">
+<div class="grid-col-4">
+<div class="subheading">Last Updated</div>
+</p></div>
+<div class="grid-col-8">Sep 18, 2026</div>
+</p></div>
+<div class="grid-row margin-bottom-3">
+<div class="grid-col-4">
+<div class="subheading">Editor</div>
+</div>
+<div class="grid-col-8">Francis Reddy</div>
+</div>
+<div class="grid-row margin-bottom-3">
+<div class="grid-col-4">
+<div class="subheading">Contact</div>
+</div>
+<div class="grid-col-8">
+<div class="margin-bottom-3">
+<div>Alise Fisher</div>
+<div><a href="mailto:alise.m.fisher@nasa.gov">alise.m.fisher@nasa.gov</a></div>
+</div>
+</div>
+</div>
+<div class="grid-row">
+<div class="grid-col-4">
+<div class="subheading">Location</div>
+</div>
+<div class="grid-col-8">Goddard Space Flight Center</div>
+</div></div>
+</p></div>
+<div class="grid-col-12 desktop:grid-col-5 padding-right-4 margin-bottom-5 desktop:margin-bottom-0">
+<div class="padding-top-3 border-top-1px border-color-carbon-black ">
+<div class="margin-bottom-2">
+<h2 class="heading-14">Related Terms</h2>
+</div>
+<ul class="article-tags">
+<li class="article-tag"><a href="https://science.nasa.gov/mission/xrism" rel="noopener">XRISM (X-Ray Imaging and Spectroscopy Mission)</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/astrophysics/" rel="noopener">Astrophysics</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/learn/basics-of-space-flight/chapter6-2/" rel="noopener">Electromagnetic Spectrum</a></li>
+<li class="article-tag"><a href="https://www.nasa.gov/goddard/" rel="noopener">Goddard Space Flight Center</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/category/universe/stars/neutron-stars/" rel="noopener">Neutron Stars</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/category/universe/stars/neutron-stars/pulsars/" rel="noopener">Pulsars</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/universe/stars/" rel="noopener">Stars</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/universe/" rel="noopener">The Universe</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/category/science-research/astrophysics/electromagnetic-spectrum/x-ray-astronomy/" rel="noopener">X-ray Astronomy</a></li>
+<li class="article-tag"><a href="https://science.nasa.gov/category/universe/stars/x-ray-binaries/" rel="noopener">X-ray Binaries</a></li>
+</ul>
+</div>
+</div></div>
+</section></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>NASA Awards SpaceX Three Crew Flights to Space Station</title>
+		<link>https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station/</link>
+		
+		<dc:creator><![CDATA[Mark A. Garcia]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2026 16:02:31 +0000</pubDate>
+				<category><![CDATA[Commercial Crew]]></category>
+		<category><![CDATA[International Space Station (ISS)]]></category>
+		<guid isPermaLink="false">https://www.nasa.gov/?p=1048645</guid>
+
+					<description><![CDATA[To continue regular crew transportation to the International Space Station, NASA has awarded SpaceX three additional missions through a contract modification.]]></description>
+										<content:encoded><![CDATA[<div id="" class="hds-media hds-module wp-block-image"><div class="margin-left-auto margin-right-auto nasa-block-align-inline"><div class="hds-media-wrapper margin-left-auto margin-right-auto"><figure class="hds-media-inner hds-cover-wrapper hds-media-ratio-cover "><a href="https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg"><img decoding="async" width="2048" height="1467" src="https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?w=2048" class="attachment-2048x2048 size-2048x2048" alt="A SpaceX Falcon 9 rocket carrying the company&#039;s Dragon spacecraft is launched on NASA’s SpaceX Crew-10 mission to the International Space Station with NASA astronauts Anne McClain and Nichole Ayers, JAXA (Japan Aerospace Exploration Agency) astronaut Takuya Onishi, and Roscosmos cosmonaut Kirill Peskov onboard, Friday, March 14, 2025, from NASA&#039;s Kennedy Space Center in Florida. NASA’s SpaceX Crew-10 mission is the tenth crew rotation mission of the SpaceX Dragon spacecraft and Falcon 9 rocket to the International Space Station as part of the agency’s Commercial Crew Program. McClain, Ayers, Onishi, and Peskov launched at 7:03 p.m. EDT from Launch Complex 39A at the NASA&#039;s Kennedy Space Center to begin a six month mission aboard the orbital outpost." style="transform: scale(1.2); transform-origin: 50% 50%; object-position: 50% 50%; object-fit: cover;" block_context="nasa-block" loading="lazy" srcset="https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg 3276w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=300,215 300w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=768,550 768w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=1024,733 1024w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=1536,1100 1536w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=2048,1467 2048w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=400,286 400w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=600,430 600w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=900,645 900w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=1200,859 1200w, https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg?resize=2000,1432 2000w" sizes="auto, (max-width: 2048px) 100vw, 2048px" /></a></figure><figcaption class="hds-caption padding-y-2"><div class="hds-caption-text p-sm margin-0">A SpaceX Falcon 9 rocket carrying the company&#8217;s Dragon spacecraft launches NASA’s SpaceX Crew-10 mission to the International Space Station on March 14, 2025.</div><div class="hds-credits">NASA/Aubrey Gemignani</div></figcaption></div></div></div>
+
+
+<p class="wp-block-paragraph"><strong><em>Editor’s note: This feature was updated on Sept. 18, 2026, to add additional details on mission readiness dates.</em></strong></p>
+
+
+
+<p class="wp-block-paragraph">To continue regular crew transportation to the International Space Station, NASA has <a href="https://sam.gov/workspace/contract/opp/aef33f01ebe845f0a0c8c40f41d89db9/view" rel="noopener">awarded</a> SpaceX three additional missions through a contract modification.</p>
+
+
+
+<p class="wp-block-paragraph">As part of the agency’s Commercial Crew Transportation Capability (CCtCap) contract, this change brings the total missions for SpaceX to 17 and helps NASA to maintain access to the space station with two unique commercial crew industry partners.</p>
+
+
+
+<p class="wp-block-paragraph">This is a firm fixed-price, indefinite-delivery/indefinite-quantity contract modification for the Crew-15, Crew-16, and Crew-17. The value of this modification for all three missions and related mission services is $946 million. The amount includes ground, launch, in-orbit, and return and recovery operations, cargo transportation for each mission, and a lifeboat capability while docked to the International Space Station. The period of performance runs through 2030, with mission readiness dates in 2027 and 2028, and brings the total CCtCap contract value with SpaceX to $5.92 billion.</p>
+
+
+
+<p class="wp-block-paragraph">The award follows the agency issuing a <a href="https://gcc02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsam.gov%2Fworkspace%2Fcontract%2Fopp%2F816f23fd6ab64b4e9b2dab312df73487%2Fview&amp;data=05%7C02%7Cmark.a.garcia%40nasa.gov%7C1e90180833634e8dff1708df1592b5da%7C7005d45845be48ae8140d43da96dd17b%7C0%7C0%7C639253391989106839%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=ZtFnv71eZ4UKzao6kHyq3jvzUpQAUIEmN%2FoEN9DniOc%3D&amp;reserved=0" rel="noopener">notice of intent</a> in May to purchase the additional missions. The current sole source modification does not preclude NASA from seeking future contract modifications for additional transportation services, as needed.</p>
+
+
+
+<p class="wp-block-paragraph">In 2014, NASA awarded the CCtCap contracts to Boeing and SpaceX through a public-private partnership as part of the agency’s Commercial Crew Program. Under CCtCap, NASA certifies that a provider’s space transportation system meets the agency’s requirements prior to flying missions with astronauts.</p>
+
+
+
+<p class="wp-block-paragraph">SpaceX was certified by NASA for crew transportation in November 2020. The company&#8217;s twelfth crew rotation mission for the agency, the Crew-12 mission, is currently in orbit docked to the space station. As part of the missions, SpaceX’s Dragon spacecraft and Falcon 9 rocket transport up to four astronauts, along with critical cargo, to the space station.</p>
+
+
+
+<p class="wp-block-paragraph">For information about NASA’s Commercial Crew Office, visit:</p>
+
+
+
+<p class="has-text-align-center wp-block-paragraph"> <a href="https://www.nasa.gov/exploration/commercial/crew">https://www.nasa.gov/exploration/commercial/crew</a></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>COSI Telescope Comes Together</title>
+		<link>https://www.nasa.gov/image-article/cosi-telescope-comes-together/</link>
+		
+		<dc:creator><![CDATA[HQ Web Team]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2026 15:45:03 +0000</pubDate>
+				<category><![CDATA[COSI (Compton Spectrometer and Imager)]]></category>
+		<guid isPermaLink="false">https://www.nasa.gov/?post_type=image-article&#038;p=1048253</guid>
+
+					<description><![CDATA[UC Berkeley engineers and managers watch as the COSI (Compton Spectrometer and Imager) detector assembly is slowly raised from a table in this July 8, 2026, image. The four pieces of silver material on the top of the detector box cover the flex circuits, which carry signals from the detectors to the readout electronics. COSI [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div id="" class="hds-media hds-module wp-block-image"><div class="margin-left-auto margin-right-auto nasa-block-align-inline"><div class="hds-media-wrapper margin-left-auto margin-right-auto"><figure class="hds-media-inner hds-cover-wrapper hds-media-ratio-none "><a href="https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg"><img decoding="async" width="2048" height="1365" src="https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?w=2048" class="attachment-2048x2048 size-2048x2048" alt="A group of five people wearing cleanroom suits, hairnets, and masks watch a small gold and silver box suspended by a small crane in a laboratory. In the background, slightly out of focus, two more people watch through a window. Next to the window is a large decal of the COSI mission patch." style="transform: scale(1); transform-origin: 50% 50%; object-position: 50% 50%; object-fit: cover;" block_context="nasa-block" loading="lazy" srcset="https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg 5000w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=300,200 300w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=768,512 768w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=1024,683 1024w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=1536,1024 1536w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=2048,1365 2048w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=400,267 400w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=600,400 600w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=900,600 900w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=1200,800 1200w, https://www.nasa.gov/wp-content/uploads/2026/09/cosi-2026july-01.jpg?resize=2000,1333 2000w" sizes="auto, (max-width: 2048px) 100vw, 2048px" /></a></figure><figcaption class="hds-caption padding-y-2"><div class="hds-credits">UC Berkeley/Alan Toth</div></figcaption></div></div></div>
+
+
+<p class="wp-block-paragraph">UC Berkeley engineers and managers watch as the <a href="https://science.nasa.gov/mission/cosi/" rel="noopener">COSI</a> (Compton Spectrometer and Imager) detector assembly is slowly raised from a table in this July 8, 2026, image. The four pieces of silver material on the top of the detector box cover the flex circuits, which carry signals from the detectors to the readout electronics.</p>
+
+
+
+<p class="wp-block-paragraph">COSI is a wide-field gamma-ray telescope that will study energetic phenomena in the Milky Way and beyond, including the creation and destruction of matter and antimatter and the final stages of the lives of stars. The mission is a collaboration between the University of California, Berkeley’s Space Sciences Laboratory; the University of California, San Diego; the Naval Research Laboratory; NASA&#8217;s Goddard Space Flight Center; Northrop Grumman; Space Dynamics Laboratory; the Italian Space Agency; and a number of research institutions.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Image credit: UC Berkeley/Alan Toth</em></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+</channel>
+</rss>

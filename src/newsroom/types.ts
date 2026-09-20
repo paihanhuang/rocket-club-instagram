@@ -45,8 +45,12 @@ export type Item = {
   /** For opportunities: the last moment to apply. */
   deadlineAt?: string;
   location?: { name: string; lat: number; lon: number };
+  /** Launch vehicle name when known (Falcon 9, Starship, Electron ...). */
+  vehicle?: string;
+  /** Best webcast when known; Launch Library ranks official streams first. */
+  webcast?: { url: string; title?: string; publisher?: string };
   /** Candidate images with their stated license, for the license check. */
-  images?: { url: string; license?: string; credit?: string; source: string }[];
+  images?: { url: string; license?: string; licenseLink?: string; credit?: string; source: string }[];
   fetchedAt: string;
 };
 

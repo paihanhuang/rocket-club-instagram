@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  One publisher pass every fifteen minutes, and one the moment the job is
+  loaded — which includes every login and every wake after a reboot. The pass
+  itself decides whether anything happens: before 15:00 local it only expires
+  drafts, reads verdicts and finishes an interrupted publish.
+
+  A missed interval is not queued up; launchd simply runs the job again at the
+  next opportunity, which is what makes fifteen minutes the right interval.
+
+  Installed by scripts/install-launchd.sh, which replaces __REPO__ and __LOGS__.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lahsrocketry.publisher</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__REPO__/scripts/run.sh</string>
+    <string>publish</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__REPO__</string>
+
+  <key>StartInterval</key>
+  <integer>900</integer>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>__LOGS__/publisher.log</string>
+  <key>StandardErrorPath</key>
+  <string>__LOGS__/publisher.log</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

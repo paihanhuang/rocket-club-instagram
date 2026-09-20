@@ -1,0 +1,272 @@
+/*
+ * The @lahsrocketry card design. One canvas, 1080x1350 (4:5), seven accents.
+ *
+ * Everything here is fixed at render time: the canvas is exactly the Chromium
+ * viewport, so px are real px in the JPEG. Nothing responsive, nothing
+ * animated, no web fonts (the system stack renders identically headless and
+ * never makes the screenshot race a font download).
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 1080px;
+  height: 1350px;
+  background: #0e1a2b;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.card {
+  /* Brand */
+  --navy: #0e1a2b;
+  --ink: #f4f6fa;
+  --muted: #9aa7bd;
+  --accent: #e0e6f0; /* overridden per pillar below */
+
+  /* Geometry */
+  --side: 96px; /* generous side margins */
+  --top: 84px;
+  --safe: 120px; /* Instagram's UI lives here: footer only */
+  --photo-height: 55%;
+
+  position: relative;
+  width: 1080px;
+  height: 1350px;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--ink);
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* One accent per pillar. The only thing a pillar template changes. */
+.card.pillar-launches { --accent: #ff7a1a; }
+.card.pillar-opportunities { --accent: #2ecc71; }
+.card.pillar-explainer { --accent: #4fc3f7; }
+.card.pillar-neighbors { --accent: #b388ff; }
+.card.pillar-weekend { --accent: #ffd54f; }
+.card.pillar-club { --accent: #ff5252; }
+.card.pillar-review { --accent: #e0e6f0; }
+
+/*
+ * Ambient light. A card is mostly empty navy above the type, so the upper half
+ * carries a soft accent glow, like a distant exhaust. It is decoration only:
+ * nothing readable ever sits up there, and it is dropped under a photo.
+ */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(900px 600px at 84% 4%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 66%),
+    radial-gradient(700px 500px at 2% 40%, rgba(255, 255, 255, 0.05), transparent 68%);
+}
+
+.card.has-photo::before {
+  display: none;
+}
+
+/* ---- Photo cover ------------------------------------------------------- */
+
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--photo-height);
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* The gradient the text sits down into, so the photo has no hard edge. */
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 26, 43, 0.12) 0%,
+    rgba(14, 26, 43, 0.22) 38%,
+    rgba(14, 26, 43, 0.72) 78%,
+    rgba(14, 26, 43, 0.97) 94%,
+    #0e1a2b 100%
+  );
+}
+
+.credit {
+  position: absolute;
+  top: calc(var(--photo-height) - 52px);
+  right: var(--side);
+  z-index: 3;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+/* ---- Masthead ---------------------------------------------------------- */
+
+.brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: var(--top) var(--side) 0;
+}
+
+.mark {
+  display: flex;
+  flex: none;
+}
+
+.mark .logo {
+  width: 96px;
+  height: 96px;
+  color: var(--ink);
+}
+
+.tag {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---- Content ----------------------------------------------------------- */
+
+.content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 34px;
+  padding: 56px var(--side) 44px;
+}
+
+/*
+ * A photo takes the top 55%, but long cover text needs more of the card than
+ * the rest leaves it. The renderer picks one of these from the text length,
+ * the same way it picks the type sizes, so the text never rides into the
+ * footer. The credit line follows the photo because it is measured from it.
+ */
+.card.cover-tight { --photo-height: 44%; }
+.card.cover-tighter { --photo-height: 35%; }
+
+.card.has-photo .content {
+  position: absolute;
+  top: var(--photo-height);
+  left: 0;
+  right: 0;
+  bottom: var(--safe);
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 0;
+}
+
+.rule {
+  width: 132px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.eyebrow {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.headline {
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+
+/* Auto-shrink: headlines over 40 characters. */
+.headline.is-small {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.body {
+  font-size: 40px;
+  line-height: 1.4;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+
+/* Auto-shrink: bodies over 180 characters. */
+.body.is-small {
+  font-size: 34px;
+  line-height: 1.45;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 8px;
+}
+
+.sign .bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(154, 167, 189, 0.3);
+}
+
+.handle-big {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+/* ---- Footer (inside Instagram's bottom safe area) ---------------------- */
+
+.footer {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  height: var(--safe);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--side) 30px;
+  font-size: 26px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.footer .handle {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.footer .count {
+  font-variant-numeric: tabular-nums;
+}

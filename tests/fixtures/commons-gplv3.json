@@ -1,0 +1,92 @@
+{
+ "batchcomplete": "",
+ "query": {
+  "pages": {
+   "176652829": {
+    "pageid": 176652829,
+    "ns": 6,
+    "title": "File:Complicitygraph.png",
+    "imagerepository": "local",
+    "imageinfo": [
+     {
+      "extmetadata": {
+       "DateTime": {
+        "value": "2025-10-13 14:31:19",
+        "source": "mediawiki-metadata",
+        "hidden": ""
+       },
+       "ObjectName": {
+        "value": "Complicitygraph",
+        "source": "mediawiki-metadata"
+       },
+       "CommonsMetadataExtension": {
+        "value": 1.2,
+        "source": "extension",
+        "hidden": ""
+       },
+       "Categories": {
+        "value": "GPL|Wikidata tools|Attribution|Files with bad file names|Gaza war (2023–present)|Complicity",
+        "source": "commons-categories",
+        "hidden": ""
+       },
+       "Assessments": {
+        "value": "",
+        "source": "commons-categories",
+        "hidden": ""
+       },
+       "ImageDescription": {
+        "value": "a screenshot of complicitygraphs.fr service",
+        "source": "commons-desc-page"
+       },
+       "DateTimeOriginal": {
+        "value": "2025-10-13",
+        "source": "commons-desc-page"
+       },
+       "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+       },
+       "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Haymillefolium&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Haymillefolium (page does not exist)\">Haymillefolium</a>",
+        "source": "commons-desc-page"
+       },
+       "Permission": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://framagit.org/tristounegg/complicitygraph/-/blob/master/README.md?ref_type=heads\">https://framagit.org/tristounegg/complicitygraph/-/blob/master/README.md?ref_type=heads</a>",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "LicenseShortName": {
+        "value": "GPLv3",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "UsageTerms": {
+        "value": "GNU General Public License v3",
+        "source": "commons-desc-page"
+       },
+       "AttributionRequired": {
+        "value": "true",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "LicenseUrl": {
+        "value": "http://www.gnu.org/licenses/gpl-3.0.html",
+        "source": "commons-desc-page"
+       },
+       "Copyrighted": {
+        "value": "True",
+        "source": "commons-desc-page",
+        "hidden": ""
+       },
+       "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+       }
+      }
+     }
+    ]
+   }
+  }
+ }
+}

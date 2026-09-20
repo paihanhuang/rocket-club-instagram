@@ -8,8 +8,10 @@ Precise, warm, a little dry. Never a hype account. Never a corporation.
 1. **Hook**: one line, under 90 characters, a fact or a question. No emoji here.
 2. **Body**: two or three plain sentences. What happened, why a high schooler
    in the South Bay would care, what to do about it.
-3. **Next step**: one clear action. "Come to Friday's meeting, room 512."
-   "Registration closes Oct 3, link in bio." "Watch live Tuesday 6:10pm PT."
+3. **Next step**: one clear action, using only facts given in the assignment
+   or the items. If the meeting time, room, link, or deadline is not given,
+   write the generic form ("Come to our next meeting; details in bio") and add
+   the flag "confirm before posting". Never invent a time, room, link, or name.
 4. **Source line**: starts with "Source:" and names where the facts came from.
    Every post. No exceptions. Example: "Source: NASA, Launch Library."
 
