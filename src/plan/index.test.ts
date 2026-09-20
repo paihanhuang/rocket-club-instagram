@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { DEFAULT_ANGLES, isoWeekFile, parsePlan, readAssignment } from "./index.js";
-import { addDays, isoWeekOf, localDate, localHour, weekdayOf } from "./time.js";
+import { isoWeekOf } from "../newsroom/time.js";
 
 async function planDirWith(name: string, markdown: string): Promise<string> {
   const dir = await mkdtemp(join(tmpdir(), "plan-"));
@@ -29,20 +29,6 @@ describe("isoWeekFile", () => {
   it("accepts an instant and reads it in Los Altos", () => {
     // 2026-09-27T05:30Z is still Saturday the 26th in California.
     expect(isoWeekFile(new Date("2026-09-27T05:30:00Z"))).toBe("2026-W39.md");
-  });
-});
-
-describe("local time", () => {
-  it("reads the calendar day and hour in America/Los_Angeles", () => {
-    expect(localDate(new Date("2026-09-27T05:30:00Z"))).toBe("2026-09-26");
-    expect(localHour(new Date("2026-09-27T05:30:00Z"))).toBe(22);
-    expect(localHour(new Date("2026-09-26T22:00:00Z"))).toBe(15);
-  });
-
-  it("numbers weekdays the way RHYTHM does", () => {
-    expect(weekdayOf("2026-09-21")).toBe(1); // Monday
-    expect(weekdayOf("2026-09-27")).toBe(0); // Sunday
-    expect(addDays("2026-09-30", 2)).toBe("2026-10-02");
   });
 });
 

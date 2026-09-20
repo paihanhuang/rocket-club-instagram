@@ -1,7 +1,13 @@
 /**
  * Calendar arithmetic for the newsroom. Every date the newsroom talks about is
- * a day in America/Los_Angeles, so the conversions live in one place: the plan
- * module owns "what day is it", and the runner and publisher borrow it.
+ * a day in America/Los_Angeles, so the conversions live in one place: this
+ * module owns "what day is it", and the plan, runner, shortlist, publisher and
+ * store all borrow it.
+ *
+ * The newsroom's day is a Los Altos day, so "this weekend" is Friday through
+ * Sunday on a Los Altos wall clock, not on a UTC one. A launch at 02:00 UTC on
+ * Saturday is Friday evening here and belongs to this weekend; a launch at
+ * 05:00 UTC on Friday is Thursday night here and does not.
  */
 
 export const TZ = "America/Los_Angeles";
@@ -87,10 +93,6 @@ export function addDays(date: string, days: number): string {
   return at.toISOString().slice(0, 10);
 }
 
-export function addHours(at: Date, hours: number): Date {
-  return new Date(at.getTime() + hours * HOUR_MS);
-}
-
 /** Parses an ISO instant, returning undefined rather than an Invalid Date. */
 export function parseInstant(value: string | undefined): number | undefined {
   if (!value) return undefined;
@@ -127,4 +129,23 @@ export function instantAt(date: string, hour: number, minute = 0, second = 0): D
   const naive = Date.UTC(y ?? 1970, (m ?? 1) - 1, d ?? 1, hour, minute, second, 0);
   const guess = new Date(naive - offsetAt(new Date(naive)));
   return new Date(naive - offsetAt(guess));
+}
+
+/**
+ * This weekend: Friday 00:00:00.000 through Sunday 23:59:59.999, local.
+ * Monday through Friday it is the weekend ahead; on Saturday and Sunday it is
+ * the weekend already under way, so a Saturday run still covers today.
+ */
+export function weekendWindow(now: Date): { from: Date; to: Date } {
+  const today = localDate(now);
+  const weekday = weekdayOf(today);
+  const toFriday = weekday === 0 ? -2 : weekday === 6 ? -1 : 5 - weekday;
+  const friday = addDays(today, toFriday);
+  const sunday = addDays(friday, 2);
+  // The last millisecond of Sunday: no zone changes offset at 23:59, so the
+  // 999 is plain arithmetic on top of the second instantAt resolves.
+  return {
+    from: instantAt(friday, 0, 0, 0),
+    to: new Date(instantAt(sunday, 23, 59, 59).getTime() + 999),
+  };
 }

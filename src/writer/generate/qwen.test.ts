@@ -159,7 +159,7 @@ describe("qwenGenerate", () => {
     await expect(qwenGenerate({ bin })(request)).rejects.toThrow(/no model configured/);
   });
 
-  it("runs headless with tools off, the schema on disk and the wall time in seconds", async () => {
+  it("runs headless in safe mode with tools off, the schema on disk and the wall time in seconds", async () => {
     const dir = await mkdtemp(join(tmpdir(), "lahs-qwen-args-"));
     dirs.push(dir);
     const argsFile = join(dir, "args.txt");
@@ -174,6 +174,7 @@ describe("qwenGenerate", () => {
     expect(args[0]).toBe("user text");
     expect(args).toContain("--system-prompt");
     expect(args[args.indexOf("--system-prompt") + 1]).toBe("system text");
+    expect(args).toContain("--safe-mode");
     expect(args[args.indexOf("--max-tool-calls") + 1]).toBe("0");
     expect(args[args.indexOf("--max-wall-time") + 1]).toBe("30");
     expect(args[args.indexOf("--output-format") + 1]).toBe("json");

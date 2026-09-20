@@ -97,9 +97,3 @@ export async function fetchItems(
 
   return { items: items, notes: notes };
 }
-
-/** For the doctor, which probes every source without fetching a pillar. */
-export { REGISTRY } from "./registry.js";
-export type { Source } from "./source.js";
-/** The optional extras the launches source attaches; the shortlist ranks on them. */
-export type { LaunchItem, LaunchExtras } from "./launchlibrary.js";

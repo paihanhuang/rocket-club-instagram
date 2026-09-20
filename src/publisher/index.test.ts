@@ -6,7 +6,7 @@ import type { DiscordPort, ImageHostPort, InstagramPort } from "../newsroom/port
 import type { Draft, Verdict } from "../newsroom/types.js";
 import { createDraftStore } from "../store/index.js";
 import { makeDraft, sampleSlides, sampleText } from "../store/test-fixtures.js";
-import { captionFor, type ContainerStatus } from "./machine.js";
+import type { ContainerStatus } from "./machine.js";
 import {
   DEFAULT_SHARE_CHECKLIST,
   HASH_MISMATCH_NOTE,
@@ -237,7 +237,6 @@ describe("publishing an approved draft", () => {
 
     await runPublisher(deps);
 
-    expect(sentCaption).toBe(captionFor(draft.text));
     expect(sentCaption).toBe(
       `${draft.text.caption}\n\n#rocketry #lahs #losaltos #stem #spaceflight`,
     );

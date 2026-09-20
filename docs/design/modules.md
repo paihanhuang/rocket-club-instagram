@@ -10,7 +10,9 @@ through that interface.
 
 - Generation runs in the evening for the next day; publishing happens on the
   first publisher run after 15:00 local. A missing draft is generated on wake.
-- Approval is an emoji reaction read over REST, bound to the content hash.
+- Approval is an emoji reaction read over REST, bound to the content hash: the
+  card prints the first 12 characters of the hash, and the verdict carries back
+  what the card said, so a draft changed after posting cannot inherit a verdict.
   Reacting approve means every flag on the card was confirmed.
 - `publishBy` comes from the item's own deadline or start time when one exists,
   else creation plus 36 hours. Publish requires `now < publishBy`.
@@ -23,6 +25,9 @@ through that interface.
 ensureModelServer → readAssignment → fetchItems → shortlist → findLicensedPhoto
 → writeDraft → renderSlides → store.save → discord.postDraft
 ```
+
+`ensureModelServer` is an injected step like the others, so a model server that
+will not start is reported to Discord the same way a dead feed is.
 
 The runner is deliberately thin: it owns the order and the failure report,
 nothing else. Every step is a module below. The publisher is a second, separate
@@ -57,14 +62,14 @@ model must produce and the schema is the contract with the writer harness.
 | Module | Interface (one line) | Hidden behind the seam | Dependency category, adapters |
 |---|---|---|---|
 | plan | `readAssignment(date, planDir) → Assignment` | Plan file parsing; rhythm fallback when no line exists | In-process |
-| sources | `fetchItems(pillar, {now, fetch, cacheDir}) → Item[]` | Source registry, Launch Library and RSS parsing, disk cache with timestamps, rate-limit spacing | External: inject `fetch`; tests use recorded fixtures |
-| shortlist | `shortlist(items, assignment, {now, home}) → Shortlist` | Time windows per pillar, distance from Los Altos, dedupe, ranking | In-process |
+| sources | `fetchItems(pillar, {now, fetch, cacheDir}) → { items, notes }` | Source registry, Launch Library and RSS parsing, disk cache with timestamps, rate-limit spacing | External: inject `fetch`; tests use recorded fixtures |
+| shortlist | `shortlist(items, assignment, {now, home, notes?}) → Shortlist` | Time windows per pillar, distance from Los Altos, dedupe, ranking | In-process |
 | license | `findLicensedPhoto(shortlist, {fetch, photoDir}) → LicensedPhoto \| undefined` | Whitelist rules, Wikimedia license lookup, download, consent list for club photos | External: inject `fetch` |
 | writer | `writeDraft(assignment, shortlist, photo, guides, generate) → DraftText` | Prompt assembly from voice guide and fence, schema validation, one retry with the validation errors fed back | Local model behind a `Generate` port with three adapters: qwen code headless, OpenAI-compatible HTTP, fake |
 | render | `renderSlides(text, pillar, photo, outDir, browser) → Slide[]` | Card templates, Playwright, JPEG 1080x1350 sRGB, cover and closing slide rules | Local-substitutable: real Chromium in tests, checked by parsing the JPEG header |
 | discord | `createDiscord({token, channelId, approvers, fetch}) → { postDraft, readVerdict, notify }` | REST multipart upload, reaction listing, approver allowlist, message formatting with copyable caption | External: inject `fetch`; fake records calls |
 | store | `createDraftStore(dir) → { save, get, list, transition }` | One JSON per draft, content hash, expiry, legal transitions only | Local-substitutable: temp dir |
-| imagehost | `createImageHost(cfg) → { publish(files) → urls, waitUntilServed(urls) }` | Push to the Pages branch through `gh api`, poll until 200 with an image content type | Two adapters: GitHub Pages, fake |
+| imagehost | `createImageHost(cfg) → { publish(files) → urls, waitUntilServed(urls) }` | Push to the Pages branch through the GitHub Contents API over `fetch` (token from `gh auth token` when none is given), poll until 200 with an image content type, remove after publish | Two adapters: GitHub Pages, fake |
 | instagram | `createInstagram({userId, token, fetch}) → { publishCarousel, publishImage, quota, refreshToken }` | Child containers, FINISHED polling, parent container, media_publish, quota check | External: inject `fetch`; fake |
 | runner | `runDaily({date, deps}) → RunResult`, `runPublisher({now, deps}) → PublishReport`, `ensureModelServer(cfg)` | Order, on-wake catch-up, failure report to Discord, publish window and expiry rules, reconciliation before retry | Composed from the modules above; tested with all fakes |
 | doctor | `doctor(env) → Check[]` | Every credential and dependency probed without posting | Composed |
@@ -78,8 +83,9 @@ model must produce and the schema is the contract with the writer harness.
   and the fake is for tests. Callers of `writeDraft` never know which is in use.
 - The store is the only place a draft's status changes. The runner and the
   publisher ask it to `transition`; they never write status themselves.
-- The publisher records container ids into the draft before calling Instagram,
-  so an interrupted publish can reconcile instead of duplicating.
+- The publisher records every container id the moment Instagram returns it,
+  and on resume it asks Instagram for a recorded container's status before
+  publishing it, so an interrupted publish never publishes twice.
 
 ## Testing strategy
 

@@ -4,6 +4,7 @@
  */
 import { z } from "zod";
 import { draftTextSchema } from "../newsroom/schemas.js";
+import { TZ } from "../newsroom/time.js";
 import type { Assignment, Item, LicensedPhoto, Pillar, Shortlist } from "../newsroom/types.js";
 
 /** A summary longer than this is cut; the model gets the gist, not the article. */
@@ -126,7 +127,7 @@ export function assemblePrompt(input: PromptInput): AssembledPrompt {
 
 
 const PT_FORMAT = new Intl.DateTimeFormat("en-US", {
-  timeZone: "America/Los_Angeles",
+  timeZone: TZ,
   weekday: "short",
   month: "short",
   day: "numeric",

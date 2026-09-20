@@ -154,12 +154,12 @@ export function normalizeSlides(input: unknown, headline: unknown, caption: unkn
  * Anything that is not an object is returned untouched so zod can say so.
  */
 export function normalizeDraft(
-  candidate: unknown,
+  answer: unknown,
   context: { assignment: Assignment; shortlist: Shortlist },
 ): unknown {
-  if (!isRecord(candidate)) return candidate;
+  if (!isRecord(answer)) return answer;
 
-  const draft: Record<string, unknown> = { ...candidate };
+  const draft: Record<string, unknown> = { ...answer };
 
   draft["slides"] = normalizeSlides(draft["slides"], draft["headline"], draft["caption"]);
   draft["hashtags"] = normalizeHashtags(draft["hashtags"], context.assignment.pillar);

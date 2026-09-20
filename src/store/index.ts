@@ -10,7 +10,7 @@
  * half-saved, and every read is validated against `draftSchema` so a hand-
  * edited file fails loudly instead of quietly publishing nonsense.
  */
-import { addDays, instantAt } from "../plan/time.js";
+import { addDays, instantAt } from "../newsroom/time.js";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, rename, unlink, writeFile } from "node:fs/promises";
 import { join } from "node:path";
@@ -26,7 +26,7 @@ import {
   type LicensedPhoto,
   type Slide,
 } from "../newsroom/types.js";
-import { DAY_MS, HOUR_MS, parseInstant } from "../plan/time.js";
+import { DAY_MS, HOUR_MS, parseInstant } from "../newsroom/time.js";
 
 /** A draft is not in the status the caller expected, or the move is not legal. */
 export class IllegalTransitionError extends Error {

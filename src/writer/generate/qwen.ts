@@ -183,7 +183,7 @@ export function qwenGenerate(opts: { bin?: string; extraArgs?: readonly string[]
  * (measured: it halves the time per call and removes the harness's own
  * project context from the prompt).
  */
-export function qwenArgs(input: {
+function qwenArgs(input: {
   user: string;
   system: string;
   schemaPath: string;

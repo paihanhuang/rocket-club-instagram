@@ -77,9 +77,3 @@ export function jsonObjectsIn(text: string): Record<string, unknown>[] {
 export function extractJsonObject(text: string): Record<string, unknown> | undefined {
   return jsonObjectsIn(stripThinkBlocks(stripCodeFences(text)))[0];
 }
-
-/** Cleans the text, then returns the last JSON object in it. */
-export function extractLastJsonObject(text: string): Record<string, unknown> | undefined {
-  const found = jsonObjectsIn(stripThinkBlocks(stripCodeFences(text)));
-  return found[found.length - 1];
-}

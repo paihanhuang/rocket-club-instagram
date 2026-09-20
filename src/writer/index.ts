@@ -18,31 +18,16 @@ import { qwenGenerate } from "./generate/qwen.js";
 import { normalizeDraft } from "./normalize.js";
 import { assemblePrompt, type Guides } from "./prompt.js";
 
+// The writer's public surface. Everything else behind this seam — the prompt
+// pieces, the invariants, the qwen stdout parser — belongs to the module and is
+// imported from its own file by the tests that cover it.
 export { DraftInvalidError, ModelTimeoutError, ModelUnavailableError, type DraftAttempt } from "./errors.js";
 export { fakeGenerate, type FakeGenerate, type GenerateRequest } from "./generate/fake.js";
 export { httpGenerate, type HttpGenerateConfig } from "./generate/http.js";
 export { withFallback } from "./generate/fallback.js";
-export { parseQwenStdout, qwenGenerate } from "./generate/qwen.js";
-export {
-  assemblePrompt,
-  type AssembledPrompt,
-  CAPTION_STRUCTURE,
-  type Guides,
-  JSON_ONLY,
-  PILLAR_NOTES,
-  type PromptInput,
-  renderItem,
-  renderShortlist,
-} from "./prompt.js";
-export {
-  CONFIRM_FLAG,
-  needsConfirmFlag,
-  normalizeDraft,
-  normalizeFlags,
-  normalizeHashtags,
-  PILLAR_HASHTAGS,
-  REQUIRED_HASHTAGS,
-} from "./normalize.js";
+export { qwenGenerate } from "./generate/qwen.js";
+export { assemblePrompt } from "./prompt.js";
+export { CONFIRM_FLAG } from "./normalize.js";
 
 /** Which harness writes the draft. */
 export type ModelChoice =

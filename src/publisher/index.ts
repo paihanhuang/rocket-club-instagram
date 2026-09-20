@@ -24,7 +24,7 @@ import type {
   PublishReport,
 } from "../newsroom/ports.js";
 import type { Draft, Post } from "../newsroom/types.js";
-import { DAY_MS, localHour } from "../plan/time.js";
+import { DAY_MS, localHour } from "../newsroom/time.js";
 import {
   next,
   resume,

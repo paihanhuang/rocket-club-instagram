@@ -14,9 +14,9 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { PILLARS, RHYTHM, type Assignment, type Pillar } from "../newsroom/types.js";
-import { asDateString, isoWeekFile, weekdayOf } from "./time.js";
+import { asDateString, isoWeekFile, weekdayOf } from "../newsroom/time.js";
 
-export { isoWeekFile, isoWeekOf, localDate, localHour, weekdayOf, TZ } from "./time.js";
+export { isoWeekFile, isoWeekOf, localDate, localHour, weekdayOf, TZ } from "../newsroom/time.js";
 
 /** The angle used when the chief wrote no line for the day. One per pillar. */
 export const DEFAULT_ANGLES: Record<Pillar, string> = {

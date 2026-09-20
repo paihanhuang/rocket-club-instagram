@@ -20,7 +20,7 @@ import { mkdir, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import type { DiscordPort, ImageHostPort, InstagramPort } from "./newsroom/ports.js";
 import { readAssignment } from "./plan/index.js";
-import { addDays, localDate } from "./plan/time.js";
+import { addDays, localDate } from "./newsroom/time.js";
 import { doctor, formatChecks, nodeFs, runCommand } from "./doctor/index.js";
 import { readTokenFile, runPublisher, writeTokenFile } from "./publisher/index.js";
 import {

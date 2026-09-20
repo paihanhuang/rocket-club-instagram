@@ -400,6 +400,3 @@ export function next(state: State, event: AnyEvent): Step {
       return stay(state);
   }
 }
-
-export const isSettled = (state: State): boolean =>
-  state.phase === "published" || state.phase === "reset" || state.phase === "failed";

@@ -15,6 +15,7 @@
 import { readFile } from "node:fs/promises";
 import { basename } from "node:path";
 import type { Clock, DiscordPort, Fetch } from "../newsroom/ports.js";
+import { TZ } from "../newsroom/time.js";
 import type { Draft, Slide, Verdict } from "../newsroom/types.js";
 
 const DEFAULT_API_BASE = "https://discord.com/api/v10";
@@ -60,7 +61,7 @@ const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 /** "Sat Sep 26, 3:00pm PT" — the time an approver actually reads. */
 export function formatPublishBy(iso: string): string {
   const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/Los_Angeles",
+    timeZone: TZ,
     weekday: "short",
     month: "short",
     day: "numeric",

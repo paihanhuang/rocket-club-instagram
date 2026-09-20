@@ -9,8 +9,7 @@
  */
 import type { Assignment, Item, Shortlist } from "../newsroom/types.js";
 import { distanceKm, type Point } from "./geo.js";
-import { NEWSROOM_TZ, weekendWindow } from "./time.js";
-import { instantAt } from "../plan/time.js";
+import { TZ, instantAt, weekendWindow } from "../newsroom/time.js";
 
 /** The publisher may post from 3pm local on the assignment day; nothing earlier can be announced. */
 const PUBLISH_WINDOW_HOUR = 15;
@@ -134,7 +133,7 @@ function notBeforeWindow(items: Item[], windowOpens: number, notes: Notes, pilla
   return kept;
 }
 
-function pickLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pillar: string, windowOpens: number): Item[] {
+function shortlistLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pillar: string, windowOpens: number): Item[] {
   const from = opts.now.getTime();
   const until = from + 7 * DAY_MS;
   const inWeek = items.filter((i) => {
@@ -152,7 +151,7 @@ function pickLaunches(items: Item[], opts: ShortlistOptions, notes: Notes, pilla
 }
 
 /** This weekend, close enough to walk outside and look up. */
-function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, windowOpens: number): Item[] {
+function shortlistWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, windowOpens: number): Item[] {
   const { from, to } = weekendWindow(opts.now);
   items = notBeforeWindow(items, windowOpens, notes, "weekend");
   const thisWeekend = items.filter((i) => {
@@ -163,7 +162,7 @@ function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, window
     "weekend",
     items.length - thisWeekend.length,
     items.length,
-    `launches outside Friday to Sunday in ${NEWSROOM_TZ}`,
+    `launches outside Friday to Sunday in ${TZ}`,
   );
 
   const nearby = thisWeekend.filter(
@@ -185,7 +184,7 @@ function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, window
   notes.say("no local launches this weekend");
   const filled = [...chronological];
   const seen = new Set(filled.map((i) => i.id));
-  for (const item of pickLaunches(items, opts, new Notes([]), "weekend", windowOpens)) {
+  for (const item of shortlistLaunches(items, opts, new Notes([]), "weekend", windowOpens)) {
     if (!seen.has(item.id)) {
       filled.push(item);
       seen.add(item.id);
@@ -195,7 +194,7 @@ function pickWeekend(items: Item[], opts: ShortlistOptions, notes: Notes, window
 }
 
 /** The last seven days, one item per story, NASA's telling preferred. */
-function pickReview(items: Item[], opts: ShortlistOptions, notes: Notes): Item[] {
+function shortlistReview(items: Item[], opts: ShortlistOptions, notes: Notes): Item[] {
   const until = opts.now.getTime();
   const from = until - 7 * DAY_MS;
   const recent = items.filter((i) => {
@@ -227,7 +226,7 @@ function pickReview(items: Item[], opts: ShortlistOptions, notes: Notes): Item[]
 }
 
 /** Still worth applying for: more than two days left. */
-function pickOpportunities(items: Item[], opts: ShortlistOptions, notes: Notes): Item[] {
+function shortlistOpportunities(items: Item[], opts: ShortlistOptions, notes: Notes): Item[] {
   const cutoff = opts.now.getTime() + 2 * DAY_MS;
   const open = items.filter((i) => {
     const deadline = at(i.deadlineAt);
@@ -244,7 +243,7 @@ function pickOpportunities(items: Item[], opts: ShortlistOptions, notes: Notes):
   return notes.cap("opportunities", "soonest", open, MAX.opportunities);
 }
 
-function pickNeighbors(items: Item[], notes: Notes): Item[] {
+function shortlistNeighbors(items: Item[], notes: Notes): Item[] {
   const newest = [...items].sort((a, b) => recency(b) - recency(a));
   return notes.cap("neighbors", "most recent", newest, MAX.neighbors);
 }
@@ -257,30 +256,30 @@ export function shortlist(
   const notes = new Notes(opts.notes ?? []);
   const windowOpens = instantAt(assignment.date, PUBLISH_WINDOW_HOUR).getTime();
 
-  let picked: Item[];
+  let chosen: Item[];
   switch (assignment.pillar) {
     case "launches":
-      picked = pickLaunches(items, opts, notes, "launches", windowOpens);
+      chosen = shortlistLaunches(items, opts, notes, "launches", windowOpens);
       break;
     case "weekend":
-      picked = pickWeekend(items, opts, notes, windowOpens);
+      chosen = shortlistWeekend(items, opts, notes, windowOpens);
       break;
     case "review":
-      picked = pickReview(items, opts, notes);
+      chosen = shortlistReview(items, opts, notes);
       break;
     case "opportunities":
-      picked = pickOpportunities(items, opts, notes);
+      chosen = shortlistOpportunities(items, opts, notes);
       break;
     case "neighbors":
-      picked = pickNeighbors(items, notes);
+      chosen = shortlistNeighbors(items, notes);
       break;
     // The explainer and the club post are written from what the assignment
     // asks for; there is nothing to filter and nothing to explain away.
     case "explainer":
     case "club":
-      picked = [...items];
+      chosen = [...items];
       break;
   }
 
-  return { assignment, items: picked, notes: notes.lines };
+  return { assignment, items: chosen, notes: notes.lines };
 }

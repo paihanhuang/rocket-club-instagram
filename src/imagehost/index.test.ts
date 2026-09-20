@@ -3,7 +3,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import type { Fetch } from "../newsroom/ports.js";
-import { createFakeImageHost, createGitHubPagesHost, ImageHostError } from "./index.js";
+import { createFakeImageHost } from "./fake.js";
+import { createGitHubPagesHost, ImageHostError } from "./index.js";
 
 const TINY_JPEG = Buffer.from(
   "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a" +

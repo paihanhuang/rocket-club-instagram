@@ -20,7 +20,7 @@ import type {
   Shortlist,
   Slide,
 } from "../newsroom/types.js";
-import { localDate, localHour } from "../plan/time.js";
+import { localDate, localHour } from "../newsroom/time.js";
 import { newDraft } from "../store/index.js";
 
 export type Home = { lat: number; lon: number };
