@@ -72,8 +72,8 @@ export function normalizeHashtags(input: unknown, pillar: Pillar): string[] {
  * model never tells us which ones it leaned on.
  */
 export function needsConfirmFlag(shortlist: Shortlist): boolean {
-  if (shortlist.items.length === 0) return true;
   if (!TIME_SENSITIVE_PILLARS.includes(shortlist.assignment.pillar)) return false;
+  if (shortlist.items.length === 0) return true;
   return shortlist.items.some((item) => !item.startsAt && !item.deadlineAt);
 }
 

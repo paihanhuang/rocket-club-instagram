@@ -360,6 +360,56 @@ async function commandSpike(args: string[]): Promise<number> {
   return 0;
 }
 
+/**
+ * The review page: the latest draft per pillar from a state directory (the
+ * gate's by default), with slides inlined, written as one HTML file.
+ */
+async function commandPreview(args: string[]): Promise<number> {
+  const { renderPreview } = await import("./preview/index.js");
+  const { readFile, writeFile } = await import("node:fs/promises");
+  const from = resolve(ROOT, flag(args, "--from") ?? join(dirs.state, "gate"));
+  const out = resolve(ROOT, flag(args, "--out") ?? join(dirs.out, "preview.html"));
+
+  const drafts = await createDraftStore(from).list();
+  const latest = new Map<string, (typeof drafts)[number]>();
+  for (const d of drafts) {
+    const seen = latest.get(d.assignment.pillar);
+    if (!seen || seen.createdAt < d.createdAt) latest.set(d.assignment.pillar, d);
+  }
+
+  const runs = await readFile(join(dirs.out, "gate.log"), "utf8")
+    .then((log) =>
+      [...log.matchAll(/^([✓✗]) \d+\/\d+ (\d{4}-\d{2}-\d{2}) (\w+)\s+([\d.]+)s(?: (\S+))?/gmu)].map((m) => ({
+        ok: m[1] === "✓",
+        date: m[2]!,
+        pillar: m[3]!,
+        seconds: Number(m[4]),
+        draftId: m[5],
+      })),
+    )
+    .catch(() => []);
+  const secondsFor = new Map(runs.filter((r) => r.draftId).map((r) => [r.draftId!, r.seconds]));
+
+  const entries = [];
+  for (const draft of [...latest.values()].sort((a, b) => a.assignment.date.localeCompare(b.assignment.date))) {
+    const slides = [];
+    for (const slide of draft.slides) {
+      try {
+        slides.push(`data:image/jpeg;base64,${(await readFile(slide.path)).toString("base64")}`);
+      } catch {
+        // a slide file that was cleaned up is simply not shown
+      }
+    }
+    entries.push({ draft, slides, seconds: secondsFor.get(draft.id) });
+  }
+
+  const html = renderPreview({ generatedAt: new Date().toISOString(), handle: "@lahsrocketry", entries, runs });
+  await mkdir(resolve(out, ".."), { recursive: true });
+  await writeFile(out, html);
+  say(`✓ ${entries.length} drafts → ${out} (${(html.length / 1024 / 1024).toFixed(1)} MB)`);
+  return 0;
+}
+
 async function commandTokenRefresh(): Promise<number> {
   const instagram = await makeInstagram();
   const { token, expiresAt } = await instagram.refreshToken();
@@ -385,6 +435,7 @@ const USAGE = [
   "  gate                          21 dry runs (GATE_FIXTURES=1 to replay sources)",
   "  spike --image <path> --yes    one real post, end to end (you delete it afterwards)",
   "  token-refresh                 renew the long-lived Instagram token",
+  "  preview [--from dir] [--out file]   the review page: latest draft per pillar",
 ].join("\n");
 
 async function main(): Promise<number> {
@@ -404,6 +455,8 @@ async function main(): Promise<number> {
       return commandSpike(args);
     case "token-refresh":
       return commandTokenRefresh();
+    case "preview":
+      return commandPreview(args);
     default:
       say(USAGE);
       return command === "" || command === "help" || command === "--help" ? 0 : 1;

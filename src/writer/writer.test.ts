@@ -180,14 +180,18 @@ describe("writeDraft: the confirm flag", () => {
     expect(draft.flags).toContain(CONFIRM_FLAG);
   });
 
-  it("is added when the shortlist is empty, whatever the pillar", async () => {
-    const fake = fakeGenerate([goodDraft()]);
-    const draft = await writerWith(fake, { guides }).writeDraft(
+  it("is added when a time-sensitive pillar has nothing to name, and not for an explainer", async () => {
+    const launches = await writerWith(fakeGenerate([goodDraft()]), { guides }).writeDraft(
+      { ...assignment, pillar: "launches" },
+      shortlist([], "launches"),
+    );
+    expect(launches.flags).toContain(CONFIRM_FLAG);
+
+    const explainer = await writerWith(fakeGenerate([goodDraft()]), { guides }).writeDraft(
       { ...assignment, pillar: "explainer" },
       shortlist([], "explainer"),
     );
-
-    expect(draft.flags).toContain(CONFIRM_FLAG);
+    expect(explainer.flags).not.toContain(CONFIRM_FLAG);
   });
 
   it("is not added when every time-sensitive item carries its own time", async () => {

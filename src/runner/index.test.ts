@@ -119,6 +119,27 @@ beforeEach(async () => {
 });
 
 describe("runDaily", () => {
+  it("falls back to an explainer when a sourced pillar has no material", async () => {
+    const h = await harness(dir);
+    h.deps.readAssignment = async (date) => ({ date, pillar: "opportunities", angle: "deadlines this week" });
+    h.deps.fetchItems = async () => ({ items: [], notes: ["opportunities: no sources wired yet"] });
+    const result = await runDaily({ date: DATE, deps: h.deps });
+    expect(result).toMatchObject({ ok: true });
+    expect(h.posted[0]?.draft.assignment.pillar).toBe("explainer");
+    expect(h.posted[0]?.draft.assignment.angle).toMatch(/surprising/);
+  });
+
+  it("falls back to space history when the club post has no consented photo", async () => {
+    const h = await harness(dir);
+    h.deps.readAssignment = async (date) => ({ date, pillar: "club", angle: "build night" });
+    h.deps.fetchItems = async () => ({ items: [], notes: [] });
+    h.deps.findLicensedPhoto = async () => undefined;
+    const result = await runDaily({ date: DATE, deps: h.deps });
+    expect(result).toMatchObject({ ok: true });
+    expect(h.posted[0]?.draft.assignment.pillar).toBe("explainer");
+    expect(h.posted[0]?.draft.assignment.angle).toMatch(/space history/);
+  });
+
   it("reports a model server that will not start like any other step", async () => {
     const h = await harness(dir);
     h.deps.ensureModelServer = async () => {

@@ -72,6 +72,15 @@ export type DailyDeps = {
   dirs: { cache: string; photos: string; out: string; plan: string };
 };
 
+/** Pillars that need fetched material; with none, the day falls back to an explainer. */
+const SOURCED_PILLARS: readonly Pillar[] = ["launches", "weekend", "opportunities", "neighbors", "review"];
+
+export const FALLBACK_ANGLES = {
+  explainer:
+    "one rocketry concept a South Bay high schooler would find surprising, explained from a concrete example, with where the analogy breaks",
+  club: "on this day in space history: one event from a past year worth knowing, with the year and what it changed",
+} as const;
+
 export type RunStep =
   | "load"
   | "ensureModelServer"
@@ -136,16 +145,28 @@ export async function runDaily({ date, deps, dryRun = false }: RunDailyInput): P
     }
 
     step = "readAssignment";
-    const assignment = await deps.readAssignment(date, deps.dirs.plan);
+    let assignment = await deps.readAssignment(date, deps.dirs.plan);
 
     step = "fetchItems";
     const fetched = await deps.fetchItems(assignment.pillar, { now, cacheDir: deps.dirs.cache });
 
     step = "shortlist";
-    const shortlist = await deps.shortlist(fetched.items, assignment, { now, home: deps.home, notes: fetched.notes });
+    let shortlist = await deps.shortlist(fetched.items, assignment, { now, home: deps.home, notes: fetched.notes });
+    if (shortlist.items.length === 0 && SOURCED_PILLARS.includes(assignment.pillar)) {
+      // The fallback (CONTEXT.md): a day whose pillar has no usable material
+      // becomes an explainer, rather than a post that pretends to have news.
+      const note = `fallback: no material for ${assignment.pillar}, writing an explainer instead`;
+      assignment = { date, pillar: "explainer", angle: FALLBACK_ANGLES.explainer };
+      shortlist = { assignment, items: [], notes: [...shortlist.notes, note] };
+    }
 
     step = "findLicensedPhoto";
     const photo = await deps.findLicensedPhoto(shortlist, { photoDir: deps.dirs.photos });
+    if (assignment.pillar === "club" && !photo) {
+      // A club post is its photo. Without a consented one, space history it is.
+      assignment = { date, pillar: "explainer", angle: FALLBACK_ANGLES.club };
+      shortlist = { assignment, items: [], notes: [...shortlist.notes, "fallback: no consented club photo"] };
+    }
 
     step = "writeDraft";
     const text = await deps.writer.writeDraft(assignment, shortlist, photo);
