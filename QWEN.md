@@ -16,3 +16,17 @@ Rules for any agent working here:
 Commands: `pnpm tool doctor` (check every key and dependency), `pnpm tool daily
 --dry-run` (make today's draft without publishing), `pnpm tool publish`,
 `pnpm tool gate`, `pnpm tool spike --image <jpg>`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues on paihanhuang/rocket-club-instagram, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+The five default labels, unchanged: needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
